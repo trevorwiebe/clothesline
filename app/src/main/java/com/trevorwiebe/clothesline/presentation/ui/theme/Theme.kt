@@ -1,4 +1,4 @@
-package com.trevorwiebe.clothesline.ui.theme
+package com.trevorwiebe.clothesline.presentation.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
