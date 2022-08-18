@@ -1,4 +1,4 @@
-package com.trevorwiebe.clothesline.presentation.ui.viewclothesworn
+package com.trevorwiebe.clothesline.presentation.ui.screens.viewclothesworn
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel

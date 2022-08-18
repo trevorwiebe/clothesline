@@ -1,4 +1,4 @@
-package com.trevorwiebe.clothesline.presentation.ui.viewclothesworn
+package com.trevorwiebe.clothesline.presentation.ui.screens.viewclothesworn
 
 import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
 import java.time.LocalDate

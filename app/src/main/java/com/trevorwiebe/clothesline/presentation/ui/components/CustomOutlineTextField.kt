@@ -3,7 +3,6 @@ package com.trevorwiebe.clothesline.presentation.ui.components
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -30,7 +29,7 @@ fun CustomOutlineTextField(
             focusedLabelColor = MaterialTheme.colors.secondary,
             unfocusedLabelColor = MaterialTheme.colors.onBackground
         ),
-        shape = RoundedCornerShape(spacing.defaultRadius),
+        shape = RoundedCornerShape(spacing.radiusMedium),
         onValueChange = onValueChange,
         label = { Text(text = labelValue) }
     )

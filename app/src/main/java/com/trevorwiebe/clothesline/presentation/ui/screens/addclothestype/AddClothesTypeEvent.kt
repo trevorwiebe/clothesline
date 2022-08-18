@@ -1,4 +1,4 @@
-package com.trevorwiebe.clothesline.presentation.ui.addclothestype
+package com.trevorwiebe.clothesline.presentation.ui.screens.addclothestype
 
 sealed class AddClothesTypeEvent{
     data class OnClothesTypeAdded(val name: String): AddClothesTypeEvent()

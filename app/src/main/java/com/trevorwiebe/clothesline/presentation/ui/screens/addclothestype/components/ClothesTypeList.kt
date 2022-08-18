@@ -1,4 +1,4 @@
-package com.trevorwiebe.clothesline.presentation.ui.addclothestype.components
+package com.trevorwiebe.clothesline.presentation.ui.screens.addclothestype.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -14,7 +14,6 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.LastBaseline
 import com.trevorwiebe.clothesline.domain.model.ClothesTypeModel
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
@@ -32,7 +31,7 @@ fun ClothesTypeList(
                 top = spacing.spaceSmall,
                 bottom = spacing.spaceSmall
             )
-            .clip(RoundedCornerShape(spacing.defaultRadius))
+            .clip(RoundedCornerShape(spacing.radiusMedium))
             .fillMaxWidth()
     ){
         Row(

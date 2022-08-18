@@ -12,7 +12,7 @@ class Dimensions (
     val spaceMediumLarge: Dp = 20.dp,
     val spaceLarge: Dp = 32.dp,
     val spaceExtraLarge: Dp = 64.dp,
-    val defaultRadius: Float = 30f
+    val radiusMedium: Float = 40f
 )
 
 val LocalSpacing = compositionLocalOf { Dimensions() }

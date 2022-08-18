@@ -1,4 +1,4 @@
-package com.trevorwiebe.clothesline.presentation.ui.addclothestype
+package com.trevorwiebe.clothesline.presentation.ui.screens.addclothestype
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -9,7 +9,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.trevorwiebe.clothesline.presentation.ui.addclothestype.components.ClothesTypeList
+import com.trevorwiebe.clothesline.presentation.ui.screens.addclothestype.components.ClothesTypeList
 import com.trevorwiebe.clothesline.presentation.ui.components.ActionButton
 import com.trevorwiebe.clothesline.presentation.ui.components.CustomOutlineTextField
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing

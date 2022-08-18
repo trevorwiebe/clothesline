@@ -1,4 +1,4 @@
-package com.trevorwiebe.clothesline.presentation.ui.addclothestype
+package com.trevorwiebe.clothesline.presentation.ui.screens.addclothestype
 
 import com.trevorwiebe.clothesline.domain.model.ClothesTypeModel
 

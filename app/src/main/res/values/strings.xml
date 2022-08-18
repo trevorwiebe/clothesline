@@ -2,7 +2,8 @@
     <string name="app_name">ClothesLine</string>
 
     <string name="clothes_type_screen">Clothes Types</string>
-    <string name="clothes_worn_screen">Clothes Worn</string>
+    <string name="clothes_worn_screen">Home</string>
     <string name="add_clothes_worn_screen">Add Clothes Worn</string>
+    <string name="profile">Profile</string>
 
 </resources>

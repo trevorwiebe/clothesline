@@ -1,4 +1,4 @@
-package com.trevorwiebe.clothesline.presentation.ui.viewclothesworn
+package com.trevorwiebe.clothesline.presentation.ui.screens.viewclothesworn
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

@@ -80,6 +80,9 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     androidTestImplementation "androidx.room:room-testing:$room_version"
 
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.2.0")
+
 
 
     // Testing
