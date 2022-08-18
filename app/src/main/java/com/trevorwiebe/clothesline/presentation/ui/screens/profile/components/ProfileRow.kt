@@ -40,6 +40,7 @@ fun ProfileRow(
         modifier = Modifier
             .clip(RoundedCornerShape(spacing.radiusMedium))
             .fillMaxWidth()
+            .clickable {  }
             .background(MaterialTheme.colors.primaryVariant)
             .padding(spacing.spaceMedium),
     ) {
@@ -54,8 +55,7 @@ fun ProfileRow(
         )
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .clickable {  },
+                .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ){
