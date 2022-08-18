@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
-import com.trevorwiebe.clothesline.presentation.navigation.graphs.RootNavigationGraph
+import com.trevorwiebe.clothesline.presentation.navigation.graphs.util.HomeNavGraph
+import com.trevorwiebe.clothesline.presentation.ui.screens.home.HomeScreen
 import com.trevorwiebe.clothesline.presentation.ui.theme.ClothesLineTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,7 +16,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ClothesLineTheme {
                 val navController = rememberNavController()
-                RootNavigationGraph(navController = navController)
+                HomeScreen(navController = navController)
             }
         }
     }
