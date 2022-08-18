@@ -3,5 +3,6 @@
 
     <string name="clothes_type_screen">Clothes Types</string>
     <string name="clothes_worn_screen">Clothes Worn</string>
+    <string name="add_clothes_worn_screen">Add Clothes Worn</string>
 
 </resources>

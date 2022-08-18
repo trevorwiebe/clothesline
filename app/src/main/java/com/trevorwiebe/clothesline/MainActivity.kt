@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ClothesLineTheme {
 
-                val bottomNavItems = listOf(BottomNavScreen.ClothesWorn, BottomNavScreen.ClothesType)
+                val bottomNavItems = listOf(BottomNavScreen.ClothesWorn, BottomNavScreen.AddClothesWorn, BottomNavScreen.ClothesType)
                 val navController = rememberNavController()
                 Scaffold(
                     bottomBar = {
@@ -58,6 +58,7 @@ class MainActivity : ComponentActivity() {
                 ) { innerPadding ->
                     NavHost(navController = navController, startDestination = BottomNavScreen.ClothesWorn.route, Modifier.padding(innerPadding)){
                         composable(BottomNavScreen.ClothesWorn.route) {}
+                        composable(BottomNavScreen.AddClothesWorn.route){}
                         composable(BottomNavScreen.ClothesType.route) {
                             AddClothesTypeScreen()
                         }

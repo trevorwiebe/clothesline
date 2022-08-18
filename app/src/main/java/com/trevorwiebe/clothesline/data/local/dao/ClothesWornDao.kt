@@ -8,11 +8,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ClothesWornDao {
 
-    @Query("" +
-            "SELECT * FROM clothes_worn " +
-            "JOIN clothes_type ON clothes_type.primaryKey = clothes_worn.primaryKey " +
+    @Query("SELECT * FROM clothes_worn " +
+            "WHERE dateWornDay = :day AND dateWornMonth = :month AND dateWornYear = :year " +
             "GROUP BY clothes_worn.name")
-    fun getClothesWornByDate(): Flow<Map<ClothesWornEntity, List<ClothesTypeEntity>>>
+    fun getClothesWornByDate(day: Int, month: Int, year: Int): Flow<List<ClothesWornEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertClothesWorn(clothesWornEntity: ClothesWornEntity)
