@@ -38,6 +38,8 @@ class MainActivity : ComponentActivity() {
                             bottomNavItems.forEach{ screen ->
                                 BottomNavigationItem(
                                     icon = { Icon(Icons.Default.Add, contentDescription = null)},
+                                    selectedContentColor = MaterialTheme.colors.secondary,
+                                    unselectedContentColor = MaterialTheme.colors.onBackground,
                                     label = { Text(stringResource(id = screen.res)) },
                                     selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                                     onClick = {
