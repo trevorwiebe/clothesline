@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ClothesLine</string>
+
+    <string name="clothes_type_screen">Clothes Types</string>
+    <string name="clothes_worn_screen">Clothes Worn</string>
+
 </resources>
