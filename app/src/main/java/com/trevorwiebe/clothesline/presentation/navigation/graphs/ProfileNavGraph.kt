@@ -11,19 +11,7 @@ fun ProfileNavGraph(navController: NavHostController){
 
     NavHost(
         navController = navController,
-        route = Route.PROFILE,
         startDestination = BottomNavScreen.Profile.route
-    ){
-        composable(BottomNavScreen.ClothesWorn.route) {}
-        composable(BottomNavScreen.AddClothesWorn.route){}
-        profileNavGraph(navController)
-    }
-}
-
-fun NavGraphBuilder.profileNavGraph(navController: NavController){
-    navigation(
-        route = Route.PROFILE,
-        startDestination = Route.PROFILE
     ){
         composable(route = Route.ADD_CLOTHES){
 
@@ -36,3 +24,20 @@ fun NavGraphBuilder.profileNavGraph(navController: NavController){
         }
     }
 }
+//
+//fun NavGraphBuilder.profileNavGraph(navController: NavController){
+//    navigation(
+//        route = Route.PROFILE,
+//        startDestination = Route.PROFILE
+//    ){
+//        composable(route = Route.ADD_CLOTHES){
+//
+//        }
+//        composable(route = Route.ADD_CLOTHES_TYPE){
+//            AddClothesTypeScreen()
+//        }
+//        composable(route = Route.SETTINGS){
+//
+//        }
+//    }
+//}
