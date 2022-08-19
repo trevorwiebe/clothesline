@@ -12,7 +12,8 @@ fun ClothesWornEntity.toClothesWornModel(): ClothesWornModel{
         friendlyId = friendlyId,
         imageURL = imageURL,
         // FIXME: I don't think this is right
-        clothesType = ClothesTypeModel(null, clothesType)
+        clothesType = ClothesTypeModel(null, clothesType),
+        outfitModel = outfitId
     )
 }
 
@@ -23,5 +24,6 @@ fun ClothesWornModel.toClothesWornEntity(): ClothesWornEntity {
         friendlyId = friendlyId,
         imageURL = imageURL,
         clothesType = clothesType.name,
+        outfitId = outfitModel
     )
 }

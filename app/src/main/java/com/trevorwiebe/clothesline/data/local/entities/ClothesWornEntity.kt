@@ -10,5 +10,6 @@ data class ClothesWornEntity(
     val name: String,
     val friendlyId: String,
     val imageURL: String,
-    val clothesType: String
+    val clothesType: String,
+    val outfitId: Int
 )
