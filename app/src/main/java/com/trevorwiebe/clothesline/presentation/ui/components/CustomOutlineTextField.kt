@@ -3,12 +3,14 @@ package com.trevorwiebe.clothesline.presentation.ui.components
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
 @Composable
@@ -28,6 +30,9 @@ fun CustomOutlineTextField(
             unfocusedBorderColor = MaterialTheme.colors.onBackground,
             focusedLabelColor = MaterialTheme.colors.secondary,
             unfocusedLabelColor = MaterialTheme.colors.onBackground
+        ),
+        keyboardOptions = KeyboardOptions.Default.copy(
+            capitalization = KeyboardCapitalization.Sentences
         ),
         shape = RoundedCornerShape(spacing.radiusMedium),
         onValueChange = onValueChange,

@@ -42,4 +42,8 @@ class ClothesLineRepositoryImpl(
                 entities.map {it.toClothesTypeModel()}
             }
     }
+
+    override suspend fun deleteClothesType(clothesTypeModel: ClothesTypeModel) {
+        clothesTypeDao.deleteClothesType(clothesTypeModel.toClothesTypeEntity())
+    }
 }

@@ -27,12 +27,7 @@ class AddClothesTypeViewModel @Inject constructor(
     var state by mutableStateOf(AddClothesTypeState())
         private set
 
-    private val _uiEvent = Channel<UiEvent>()
-    val uiEvent = _uiEvent.receiveAsFlow()
-
     private var getClothesTypes: Job? = null
-
-    private var testClothesTypeList = listOf(ClothesTypeModel(null,"Underwear"), ClothesTypeModel(null,"Shirts") )
 
     init {
         refreshClothsTypes()
@@ -48,6 +43,9 @@ class AddClothesTypeViewModel @Inject constructor(
                     clothesTypeString = event.name
                 )
             }
+            is AddClothesTypeEvent.OnClothesTypeDelete -> {
+                deleteClothesType(event.clothesTypeModel)
+            }
         }
     }
 
@@ -59,12 +57,21 @@ class AddClothesTypeViewModel @Inject constructor(
         }
     }
 
+    private fun deleteClothesType(clothesTypeModel: ClothesTypeModel){
+        viewModelScope.launch {
+            addClothesTypeUseCases.deleteClothesTypeUC(
+                clothesTypeModel = clothesTypeModel
+            )
+        }
+    }
+
     private fun refreshClothsTypes(){
         getClothesTypes?.cancel()
         getClothesTypes = addClothesTypeUseCases.getClothesTypeUC()
             .onEach { clothesModel ->
                 state = state.copy(
-                    clothesTypesList = clothesModel
+                    clothesTypesList = clothesModel,
+                    clothesTypeString = ""
                 )
             }
             .launchIn(viewModelScope)

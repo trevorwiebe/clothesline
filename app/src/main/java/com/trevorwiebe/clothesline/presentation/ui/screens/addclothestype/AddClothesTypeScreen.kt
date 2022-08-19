@@ -3,6 +3,7 @@ package com.trevorwiebe.clothesline.presentation.ui.screens.addclothestype
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -41,7 +42,6 @@ fun AddClothesTypeScreen(
                     modifier = Modifier.padding(start = spacing.spaceMedium, end = spacing.spaceMedium),
                     text = "Save Clothes Type",
                     onClick = {
-                        keyboardController?.hide()
                         viewModel.onEvent(
                             AddClothesTypeEvent.OnClothesTypeAdded(
                                 name = "This is a test"
@@ -57,7 +57,12 @@ fun AddClothesTypeScreen(
             }
         }
         items(state.clothesTypesList){ clothesType ->
-            ClothesTypeList(clothesTypeModel = clothesType)
+            ClothesTypeList(
+                clothesTypeModel = clothesType,
+                {
+                    viewModel.onEvent(AddClothesTypeEvent.OnClothesTypeDelete(clothesType))
+                }
+            )
         }
     }
 }
