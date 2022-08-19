@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.trevorwiebe.clothesline.core.util.UiEvent
 import com.trevorwiebe.clothesline.domain.model.ClothesTypeModel
-import com.trevorwiebe.clothesline.domain.use_cases.addclothesusecases.AddClothesUseCases
+import com.trevorwiebe.clothesline.domain.use_cases.addclothestypeusecases.AddClothesTypeUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddClothesTypeViewModel @Inject constructor(
-    private val addClothesUseCases: AddClothesUseCases
+    private val addClothesTypeUseCases: AddClothesTypeUseCases
 ): ViewModel() {
 
     val TAG = "AddClothesTypeViewModel"
@@ -53,7 +53,7 @@ class AddClothesTypeViewModel @Inject constructor(
 
     private fun addClothesType(){
         viewModelScope.launch {
-            addClothesUseCases.addClothesTypeUC(
+            addClothesTypeUseCases.addClothesTypeUC(
                 name = state.clothesTypeString
             )
         }
@@ -61,7 +61,7 @@ class AddClothesTypeViewModel @Inject constructor(
 
     private fun refreshClothsTypes(){
         getClothesTypes?.cancel()
-        getClothesTypes = addClothesUseCases.getClothesTypeUC()
+        getClothesTypes = addClothesTypeUseCases.getClothesTypeUC()
             .onEach { clothesModel ->
                 state = state.copy(
                     clothesTypesList = clothesModel

@@ -1,4 +1,4 @@
-package com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.item
+package com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases
 
 import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository

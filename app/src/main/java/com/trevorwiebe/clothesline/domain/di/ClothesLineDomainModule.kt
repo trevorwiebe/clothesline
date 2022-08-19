@@ -1,11 +1,11 @@
 package com.trevorwiebe.clothesline.domain.di
 
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
-import com.trevorwiebe.clothesline.domain.use_cases.addclothesusecases.AddClothesTypeUC
-import com.trevorwiebe.clothesline.domain.use_cases.addclothesusecases.AddClothesUseCases
-import com.trevorwiebe.clothesline.domain.use_cases.addclothesusecases.GetClothesTypes
+import com.trevorwiebe.clothesline.domain.use_cases.addclothestypeusecases.AddClothesTypeUC
+import com.trevorwiebe.clothesline.domain.use_cases.addclothestypeusecases.AddClothesTypeUseCases
+import com.trevorwiebe.clothesline.domain.use_cases.addclothestypeusecases.GetClothesTypes
 import com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.ViewClothesUseCases
-import com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.item.GetClothesWorn
+import com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.GetClothesWorn
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,8 +20,8 @@ object ClothesLineDomainModule {
     @Provides
     fun provideClothesLine_AddClothesUseCases(
         repository: ClothesLineRepository
-    ): AddClothesUseCases {
-        return AddClothesUseCases(
+    ): AddClothesTypeUseCases {
+        return AddClothesTypeUseCases(
             addClothesTypeUC = AddClothesTypeUC(repository),
             getClothesTypeUC = GetClothesTypes(repository)
         )

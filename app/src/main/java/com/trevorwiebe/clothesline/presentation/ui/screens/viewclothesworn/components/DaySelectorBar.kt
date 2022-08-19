@@ -31,8 +31,7 @@ fun DaySelectorBar(
     val spacing = LocalSpacing.current
 
     Row(modifier = Modifier
-        .fillMaxWidth()
-        .padding(spacing.spaceMedium),
+        .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Icon(
