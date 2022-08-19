@@ -12,6 +12,6 @@ fun ViewClothesWornScreen(
 
     var state = viewModel.state
 
-    DaySelectorBar(state = state)
+    DaySelectorBar(viewModel = viewModel)
 
 }

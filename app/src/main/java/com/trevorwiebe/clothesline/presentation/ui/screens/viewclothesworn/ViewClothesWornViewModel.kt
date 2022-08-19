@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.ViewClothesUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
@@ -18,6 +19,8 @@ class ViewClothesWornViewModel @Inject constructor(
 
     var state by mutableStateOf(ViewClothesState())
 
+    private var getClothesWornJob: Job? = null
+
     init {
         loadClothesWorn()
     }
@@ -25,16 +28,26 @@ class ViewClothesWornViewModel @Inject constructor(
     fun onEvent(event: ViewClothesWornEvent){
         when(event){
             is ViewClothesWornEvent.OnNextDayClick -> {
+                state = state.copy(
+                    date = state.date.plusDays(1)
+                )
+                loadClothesWorn()
+            }
+            is ViewClothesWornEvent.OnDateSelected -> {
 
             }
             is ViewClothesWornEvent.OnPreviousDayClick -> {
-
+                state = state.copy(
+                    date = state.date.minusDays(1)
+                )
+                loadClothesWorn()
             }
         }
     }
 
     private fun loadClothesWorn(){
-        viewClothesUseCases
+        getClothesWornJob?.cancel()
+        getClothesWornJob = viewClothesUseCases
             .getClothesWorn(state.date)
             .onEach {
                 state = state.copy(

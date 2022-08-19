@@ -2,6 +2,7 @@ package com.trevorwiebe.clothesline.presentation.ui.screens.viewclothesworn.comp
 
 import android.view.View
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,11 +19,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import com.trevorwiebe.clothesline.presentation.ui.components.parseDate
 import com.trevorwiebe.clothesline.presentation.ui.screens.viewclothesworn.ViewClothesState
+import com.trevorwiebe.clothesline.presentation.ui.screens.viewclothesworn.ViewClothesWornEvent
+import com.trevorwiebe.clothesline.presentation.ui.screens.viewclothesworn.ViewClothesWornViewModel
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
 @Composable
 fun DaySelectorBar(
-    state: ViewClothesState
+    viewModel: ViewClothesWornViewModel
 ) {
 
     val spacing = LocalSpacing.current
@@ -35,6 +38,7 @@ fun DaySelectorBar(
         Icon(
             modifier = Modifier
                 .clip(RoundedCornerShape(spacing.radiusMedium))
+                .clickable { viewModel.onEvent(ViewClothesWornEvent.OnPreviousDayClick) }
                 .background(MaterialTheme.colors.primaryVariant)
                 .padding(spacing.spaceMedium),
             imageVector = Icons.Default.ArrowBack,
@@ -43,13 +47,15 @@ fun DaySelectorBar(
         Text(
             modifier = Modifier
                 .clip(RoundedCornerShape(spacing.radiusMedium))
+                .clickable {  }
                 .background(MaterialTheme.colors.primaryVariant)
                 .padding(spacing.spaceMedium),
-            text = parseDate(date = state.date)
+            text = parseDate(date = viewModel.state.date)
         )
         Icon(
             modifier = Modifier
                 .clip(RoundedCornerShape(spacing.radiusMedium))
+                .clickable { viewModel.onEvent(ViewClothesWornEvent.OnNextDayClick) }
                 .background(MaterialTheme.colors.primaryVariant)
                 .padding(spacing.spaceMedium),
             imageVector = Icons.Default.ArrowForward,
