@@ -7,6 +7,5 @@ data class ClothesWornModel(
     val name: String,
     val friendlyId: String,
     val imageURL: String,
-    val date: LocalDate,
     val clothesType: ClothesTypeModel
 )

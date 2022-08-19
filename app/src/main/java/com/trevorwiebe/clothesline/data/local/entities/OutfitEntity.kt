@@ -3,12 +3,12 @@ package com.trevorwiebe.clothesline.data.local.entities
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "clothes_worn")
-data class ClothesWornEntity(
+@Entity(tableName = "outfit")
+data class OutfitEntity(
     @PrimaryKey(autoGenerate = true)
     val primaryKey: Int? = null,
     val name: String,
-    val friendlyId: String,
-    val imageURL: String,
-    val clothesType: String
+    val dateDay: Int,
+    val dateMonth: Int,
+    val dateYear: Int
 )

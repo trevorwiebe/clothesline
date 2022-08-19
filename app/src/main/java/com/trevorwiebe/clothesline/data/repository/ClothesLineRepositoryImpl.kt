@@ -26,11 +26,7 @@ class ClothesLineRepositoryImpl(
     }
 
     override fun getClothesWorn(date: LocalDate):  Flow<List<ClothesWornModel>>{
-        return clothesWornDao.getClothesWornByDate(
-            day = date.dayOfMonth,
-            month = date.monthValue,
-            year = date.year
-        )
+        return clothesWornDao.getClothesWornByDate()
             .map { entities ->
                 entities.map { it.toClothesWornModel() }
             }

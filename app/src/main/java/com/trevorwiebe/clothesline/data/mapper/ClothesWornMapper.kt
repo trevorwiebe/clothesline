@@ -11,7 +11,6 @@ fun ClothesWornEntity.toClothesWornModel(): ClothesWornModel{
         name = name,
         friendlyId = friendlyId,
         imageURL = imageURL,
-        date = LocalDate.of(dateWornYear, dateWornMonth, dateWornDay),
         // FIXME: I don't think this is right
         clothesType = ClothesTypeModel(null, clothesType)
     )
@@ -23,9 +22,6 @@ fun ClothesWornModel.toClothesWornEntity(): ClothesWornEntity {
         name = name,
         friendlyId = friendlyId,
         imageURL = imageURL,
-        dateWornDay = date.dayOfMonth,
-        dateWornMonth = date.monthValue,
-        dateWornYear = date.year,
         clothesType = clothesType.name,
     )
 }
