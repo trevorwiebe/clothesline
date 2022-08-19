@@ -5,8 +5,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.trevorwiebe.clothesline.presentation.navigation.BottomNavScreen
-import com.trevorwiebe.clothesline.presentation.navigation.ProfileNavGraph
+import com.trevorwiebe.clothesline.presentation.navigation.Route
+import com.trevorwiebe.clothesline.presentation.ui.screens.addclothestype.AddClothesTypeScreen
 import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.AddClothesWornScreen
+import com.trevorwiebe.clothesline.presentation.ui.screens.profile.ProfileScreen
 import com.trevorwiebe.clothesline.presentation.ui.screens.viewclothesworn.ViewClothesWornScreen
 
 @Composable
@@ -22,7 +24,16 @@ fun HomeNavGraph(navController: NavHostController) {
             AddClothesWornScreen()
         }
         composable(route = BottomNavScreen.Profile.route){
-            ProfileNavGraph(navController = navController)
+            ProfileScreen(navController)
+        }
+        composable(route = Route.ADD_CLOTHES){
+
+        }
+        composable(route = Route.ADD_CLOTHES_TYPE){
+            AddClothesTypeScreen()
+        }
+        composable(route = Route.SETTINGS){
+
         }
     }
 

@@ -17,12 +17,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.trevorwiebe.clothesline.R
+import com.trevorwiebe.clothesline.presentation.navigation.Route
 import com.trevorwiebe.clothesline.presentation.ui.components.ProfileImageDisplay
 import com.trevorwiebe.clothesline.presentation.ui.screens.profile.components.ProfileRow
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
 @Composable
-fun ProfileScreen(navController: NavHostController = rememberNavController()) {
+fun ProfileScreen(navController: NavHostController) {
     val spacing = LocalSpacing.current
     Column(
         modifier = Modifier.padding(spacing.spaceMedium)
@@ -38,7 +39,8 @@ fun ProfileScreen(navController: NavHostController = rememberNavController()) {
             icon = Icons.Default.Add,
             color = MaterialTheme.colors.secondary,
             rowContentDescription = "Add Clothes",
-            more = true
+            more = true,
+            onClick = {navController.navigate(Route.ADD_CLOTHES)}
         )
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
         ProfileRow(
@@ -46,7 +48,8 @@ fun ProfileScreen(navController: NavHostController = rememberNavController()) {
             icon = Icons.Default.Add,
             color = MaterialTheme.colors.secondary,
             rowContentDescription = "Add Clothes Types",
-            more = true
+            more = true,
+            onClick = {navController.navigate(Route.ADD_CLOTHES_TYPE)}
         )
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
         ProfileRow(
@@ -54,7 +57,8 @@ fun ProfileScreen(navController: NavHostController = rememberNavController()) {
             icon = Icons.Default.Settings,
             color = MaterialTheme.colors.secondary,
             rowContentDescription = "Settings",
-            more = true
+            more = true,
+            onClick = {navController.navigate(Route.SETTINGS)}
         )
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
         ProfileRow(
@@ -62,7 +66,8 @@ fun ProfileScreen(navController: NavHostController = rememberNavController()) {
             icon = Icons.Default.AccountBox,
             color = MaterialTheme.colors.secondary,
             rowContentDescription = "Sign Out",
-            more = false
+            more = false,
+            onClick = {}
         )
     }
 }

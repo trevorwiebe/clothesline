@@ -33,14 +33,15 @@ fun ProfileRow(
     icon: ImageVector,
     color: Color,
     rowContentDescription: String,
-    more: Boolean
+    more: Boolean,
+    onClick: () -> Unit
 ) {
     val spacing = LocalSpacing.current
     Row(
         modifier = Modifier
             .clip(RoundedCornerShape(spacing.radiusMedium))
             .fillMaxWidth()
-            .clickable {  }
+            .clickable { onClick() }
             .background(MaterialTheme.colors.primaryVariant)
             .padding(spacing.spaceMedium),
     ) {
