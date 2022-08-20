@@ -27,13 +27,16 @@ fun HomeNavGraph(navController: NavHostController) {
         composable(route = BottomNavScreen.Profile.route){
             ProfileScreen(navController)
         }
-        composable(route = Route.ADD_CLOTHES){
-            ManageClothesScreen()
+        composable(route = Route.MANAGE_CLOTHES){
+            ManageClothesScreen(navController)
         }
-        composable(route = Route.ADD_CLOTHES_TYPE){
+        composable(route = Route.MANAGE_CLOTHES_TYPE){
             AddClothesTypeScreen()
         }
         composable(route = Route.SETTINGS){
+
+        }
+        composable(route = Route.ADD_CLOTHES){
 
         }
     }

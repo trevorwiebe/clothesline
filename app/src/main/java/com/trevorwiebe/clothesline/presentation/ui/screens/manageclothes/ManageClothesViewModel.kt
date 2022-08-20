@@ -25,18 +25,33 @@ class ManageClothesViewModel @Inject constructor(
         private set
 
     init{
-        refreshClothsTypes()
+        refreshClothesTypes()
     }
 
-    private fun refreshClothsTypes(){
+    fun onEvent(event: ManageClothesEvent){
+        when(event){
+            is ManageClothesEvent.OnClothesCategorySelected -> {
+                state = state.copy(
+                    selectedClothesCategory = event.clothesCategoryModel
+                )
+            }
+        }
+    }
+
+    private fun refreshClothesTypes(){
         getClothesTypes?.cancel()
         getClothesTypes = manageClothesCategoryUseCases.getClothesCategoryUC()
             .onEach { clothesCategoryModel ->
                 state = state.copy(
-                    clothesCategoryList = clothesCategoryModel
+                    clothesCategoryList = clothesCategoryModel,
+                    selectedClothesCategory = clothesCategoryModel[0]
                 )
             }
             .launchIn(viewModelScope)
+    }
+
+    private fun refreshClothes(){
+
     }
 
 }

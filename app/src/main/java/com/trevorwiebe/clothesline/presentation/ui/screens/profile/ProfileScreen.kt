@@ -1,11 +1,9 @@
 package com.trevorwiebe.clothesline.presentation.ui.screens.profile
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
@@ -14,8 +12,6 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
 import com.trevorwiebe.clothesline.R
 import com.trevorwiebe.clothesline.presentation.navigation.Route
 import com.trevorwiebe.clothesline.presentation.ui.components.ProfileImageDisplay
@@ -40,7 +36,7 @@ fun ProfileScreen(navController: NavHostController) {
             color = MaterialTheme.colors.secondary,
             rowContentDescription = "Add Clothes",
             more = true,
-            onClick = {navController.navigate(Route.ADD_CLOTHES)}
+            onClick = {navController.navigate(Route.MANAGE_CLOTHES)}
         )
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
         ProfileRow(
@@ -49,7 +45,7 @@ fun ProfileScreen(navController: NavHostController) {
             color = MaterialTheme.colors.secondary,
             rowContentDescription = "Add Clothes Types",
             more = true,
-            onClick = {navController.navigate(Route.ADD_CLOTHES_TYPE)}
+            onClick = {navController.navigate(Route.MANAGE_CLOTHES_TYPE)}
         )
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
         ProfileRow(

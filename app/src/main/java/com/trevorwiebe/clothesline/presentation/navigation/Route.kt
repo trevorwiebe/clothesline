@@ -8,7 +8,8 @@ object Route {
     const val PROFILE = "profile"
 
     // Profile
+    const val MANAGE_CLOTHES = "manage_clothes"
     const val ADD_CLOTHES = "add_clothes"
-    const val ADD_CLOTHES_TYPE = "add_clothes_type"
+    const val MANAGE_CLOTHES_TYPE = "manage_clothes_types"
     const val SETTINGS = "settings"
 }
