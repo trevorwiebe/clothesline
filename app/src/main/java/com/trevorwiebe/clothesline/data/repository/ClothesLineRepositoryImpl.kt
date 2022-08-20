@@ -1,12 +1,12 @@
 package com.trevorwiebe.clothesline.data.repository
 
 import com.trevorwiebe.clothesline.data.local.dao.ClothesCategoryDao
+import com.trevorwiebe.clothesline.data.local.dao.ClothesDao
 import com.trevorwiebe.clothesline.data.local.dao.ClothesWornDao
-import com.trevorwiebe.clothesline.data.mapper.toClothesTypeEntity
-import com.trevorwiebe.clothesline.data.mapper.toClothesTypeModel
-import com.trevorwiebe.clothesline.data.mapper.toClothesWornEntity
-import com.trevorwiebe.clothesline.data.mapper.toClothesWornModel
+import com.trevorwiebe.clothesline.data.local.dao.OutfitDao
+import com.trevorwiebe.clothesline.data.mapper.*
 import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
+import com.trevorwiebe.clothesline.domain.model.ClothesModel
 import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
 import kotlinx.coroutines.flow.Flow
@@ -15,9 +15,28 @@ import java.time.LocalDate
 
 class ClothesLineRepositoryImpl(
     private val clothesWornDao: ClothesWornDao,
-    private val clothesCategoryDao: ClothesCategoryDao
+    private val clothesCategoryDao: ClothesCategoryDao,
+    private val clothesDao: ClothesDao,
+    private val outfitDao: OutfitDao
 ): ClothesLineRepository {
 
+    // clothes
+    override suspend fun insertClothes(clothes: ClothesModel) {
+        clothesDao.insertClothes(clothes.toClothesEntity())
+    }
+
+    override fun getClothes(): Flow<List<ClothesModel>> {
+        return clothesDao.getClothes()
+            .map { entities ->
+                entities.map { it.toClothesModel() }
+            }
+    }
+
+    override suspend fun deleteClothesType(clothes: ClothesModel) {
+        clothesDao.deleteClothes(clothes.toClothesEntity())
+    }
+
+    // clothes worn
     override suspend fun insertClothesWorn(clothesWorn: ClothesWornModel) {
         clothesWornDao.insertClothesWorn(clothesWorn.toClothesWornEntity())
     }
@@ -29,6 +48,7 @@ class ClothesLineRepositoryImpl(
             }
     }
 
+    // clothes categories
     override suspend fun insertClothesType(clothesCategoryModel: ClothesCategoryModel) {
         clothesCategoryDao.insertClothesCategory(clothesCategoryModel.toClothesTypeEntity())
     }

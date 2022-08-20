@@ -8,6 +8,7 @@ import com.trevorwiebe.clothesline.presentation.navigation.BottomNavScreen
 import com.trevorwiebe.clothesline.presentation.navigation.Route
 import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothescategory.AddClothesTypeScreen
 import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.AddClothesWornScreen
+import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.ManageClothesScreen
 import com.trevorwiebe.clothesline.presentation.ui.screens.profile.ProfileScreen
 import com.trevorwiebe.clothesline.presentation.ui.screens.viewclothesworn.ViewClothesWornScreen
 
@@ -27,7 +28,7 @@ fun HomeNavGraph(navController: NavHostController) {
             ProfileScreen(navController)
         }
         composable(route = Route.ADD_CLOTHES){
-
+            ManageClothesScreen()
         }
         composable(route = Route.ADD_CLOTHES_TYPE){
             AddClothesTypeScreen()
