@@ -55,7 +55,7 @@ fun ProfileImageDisplay(
             )
             Text(
                 text = "Trevor Wiebe",
-                color = MaterialTheme.colors.onPrimary,
+                color = MaterialTheme.colors.onBackground,
                 modifier = Modifier
                     .padding(start = spacing.spaceMedium, end = spacing.spaceMedium)
                     .align(CenterHorizontally),
@@ -64,7 +64,7 @@ fun ProfileImageDisplay(
             )
             Text(
                 text = "thisistrevor4@gmail.com",
-                color = MaterialTheme.colors.onPrimary,
+                color = MaterialTheme.colors.onBackground,
                 modifier = Modifier
                     .padding(top=spacing.spaceSmall, start = spacing.spaceMedium, end = spacing.spaceMedium, bottom = spacing.spaceMedium)
                     .align(CenterHorizontally),

@@ -65,8 +65,7 @@ fun ProfileRow(
                     .padding(start = spacing.spaceMedium, end = spacing.spaceMedium),
                 text = name,
                 fontSize = 16.sp,
-                color = MaterialTheme.colors.onPrimary,
-                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colors.onBackground
             )
             if(more){
                 Icon(
