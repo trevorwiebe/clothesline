@@ -29,7 +29,8 @@ fun CustomOutlineTextField(
             focusedBorderColor = MaterialTheme.colors.secondary,
             unfocusedBorderColor = MaterialTheme.colors.onBackground,
             focusedLabelColor = MaterialTheme.colors.secondary,
-            unfocusedLabelColor = MaterialTheme.colors.onBackground
+            unfocusedLabelColor = MaterialTheme.colors.onBackground,
+            cursorColor = MaterialTheme.colors.onBackground
         ),
         keyboardOptions = KeyboardOptions.Default.copy(
             capitalization = KeyboardCapitalization.Sentences

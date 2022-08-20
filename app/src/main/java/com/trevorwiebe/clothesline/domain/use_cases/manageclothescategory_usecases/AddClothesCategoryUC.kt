@@ -1,16 +1,16 @@
-package com.trevorwiebe.clothesline.domain.use_cases.addclothestypeusecases
+package com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases
 
-import com.trevorwiebe.clothesline.domain.model.ClothesTypeModel
+import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
 
-class AddClothesTypeUC (
+class AddClothesCategoryUC (
     private val repository: ClothesLineRepository
 ){
     suspend operator fun invoke(
         name: String
     ){
         repository.insertClothesType(
-            ClothesTypeModel(null, name)
+            ClothesCategoryModel(null, name)
         )
     }
 }

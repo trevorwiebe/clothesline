@@ -1,4 +1,4 @@
-package com.trevorwiebe.clothesline.presentation.ui.screens.addclothestype.components
+package com.trevorwiebe.clothesline.presentation.ui.screens.manageclothescategory.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,12 +16,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import com.trevorwiebe.clothesline.domain.model.ClothesTypeModel
+import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
 @Composable
 fun ClothesTypeList(
-    clothesTypeModel: ClothesTypeModel,
+    clothesCategoryModel: ClothesCategoryModel,
     onDeleteClicked: () -> Unit
 ) {
     val spacing = LocalSpacing.current
@@ -45,7 +45,7 @@ fun ClothesTypeList(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = clothesTypeModel.name,
+                text = clothesCategoryModel.name,
                 color = MaterialTheme.colors.onPrimary,
                 modifier = Modifier
                     .padding(start = spacing.spaceMedium, end = spacing.spaceMedium),

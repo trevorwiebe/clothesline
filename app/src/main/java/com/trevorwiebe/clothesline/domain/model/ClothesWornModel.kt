@@ -5,6 +5,6 @@ data class ClothesWornModel(
     val name: String,
     val friendlyId: String,
     val imageURL: String,
-    val clothesType: ClothesTypeModel,
+    val clothesType: ClothesCategoryModel,
     val outfitModel: Int
 )

@@ -1,9 +1,8 @@
 package com.trevorwiebe.clothesline.data.mapper
 
 import com.trevorwiebe.clothesline.data.local.entities.ClothesWornEntity
-import com.trevorwiebe.clothesline.domain.model.ClothesTypeModel
+import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
-import java.time.LocalDate
 
 fun ClothesWornEntity.toClothesWornModel(): ClothesWornModel{
     return ClothesWornModel(
@@ -12,7 +11,7 @@ fun ClothesWornEntity.toClothesWornModel(): ClothesWornModel{
         friendlyId = friendlyId,
         imageURL = imageURL,
         // FIXME: I don't think this is right
-        clothesType = ClothesTypeModel(null, clothesType),
+        clothesType = ClothesCategoryModel(null, clothesType),
         outfitModel = outfitId
     )
 }

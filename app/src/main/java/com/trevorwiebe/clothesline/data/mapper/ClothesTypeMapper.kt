@@ -1,18 +1,17 @@
 package com.trevorwiebe.clothesline.data.mapper
 
-import com.trevorwiebe.clothesline.data.local.entities.ClothesTypeEntity
-import com.trevorwiebe.clothesline.domain.model.ClothesTypeModel
-import com.trevorwiebe.clothesline.presentation.navigation.BottomNavScreen
+import com.trevorwiebe.clothesline.data.local.entities.ClothesCategoryEntity
+import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 
-fun ClothesTypeModel.toClothesTypeEntity(): ClothesTypeEntity {
-    return ClothesTypeEntity(
+fun ClothesCategoryModel.toClothesTypeEntity(): ClothesCategoryEntity {
+    return ClothesCategoryEntity(
         primaryKey = primaryKey,
         name = name
     )
 }
 
-fun ClothesTypeEntity.toClothesTypeModel(): ClothesTypeModel {
-    return ClothesTypeModel(
+fun ClothesCategoryEntity.toClothesTypeModel(): ClothesCategoryModel {
+    return ClothesCategoryModel(
         primaryKey = primaryKey,
         name = name
     )

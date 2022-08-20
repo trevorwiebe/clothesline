@@ -1,16 +1,15 @@
-package com.trevorwiebe.clothesline.presentation.ui.screens.addclothestype
+package com.trevorwiebe.clothesline.presentation.ui.screens.manageclothescategory
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.trevorwiebe.clothesline.presentation.ui.screens.addclothestype.components.ClothesTypeList
+import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothescategory.components.ClothesTypeList
 import com.trevorwiebe.clothesline.presentation.ui.components.ActionButton
 import com.trevorwiebe.clothesline.presentation.ui.components.CustomOutlineTextField
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
@@ -18,7 +17,7 @@ import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun AddClothesTypeScreen(
-    viewModel: AddClothesTypeViewModel = hiltViewModel()
+    viewModel: ManageClothesCategoryViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
     val TAG = "AddClothesTypeScreen"
@@ -31,19 +30,19 @@ fun AddClothesTypeScreen(
             ) {
                 Spacer(modifier = Modifier.height(spacing.spaceMedium))
                 CustomOutlineTextField(
-                    labelValue = "Add Clothes Type - Example: Pants",
+                    labelValue = "Add clothes category - Example: Pants",
                     contentValue = state.clothesTypeString,
                     onValueChange = {
-                        viewModel.onEvent(AddClothesTypeEvent.OnClothesTypeChange(it))
+                        viewModel.onEvent(ManageClothesCategoryEvent.OnClothesCategoryChange(it))
                     }
                 )
                 Spacer(modifier = Modifier.height(spacing.spaceLarge))
                 ActionButton(
                     modifier = Modifier.padding(start = spacing.spaceMedium, end = spacing.spaceMedium),
-                    text = "Save Clothes Type",
+                    text = "Save clothes category",
                     onClick = {
                         viewModel.onEvent(
-                            AddClothesTypeEvent.OnClothesTypeAdded(
+                            ManageClothesCategoryEvent.OnClothesCategoryAdded(
                                 name = "This is a test"
                             )
                         )
@@ -51,16 +50,16 @@ fun AddClothesTypeScreen(
                 )
                 Spacer(modifier = Modifier.height(spacing.spaceMedium))
                 Text(
-                    text = "Current clothes types",
+                    text = "Current clothes categories",
                     modifier = Modifier.padding(start = spacing.spaceMedium, end = spacing.spaceMedium,top = spacing.spaceSmall, bottom = spacing.spaceSmall)
                 )
             }
         }
         items(state.clothesTypesList){ clothesType ->
             ClothesTypeList(
-                clothesTypeModel = clothesType,
+                clothesCategoryModel = clothesType,
                 {
-                    viewModel.onEvent(AddClothesTypeEvent.OnClothesTypeDelete(clothesType))
+                    viewModel.onEvent(ManageClothesCategoryEvent.OnClothesCategoryDelete(clothesType))
                 }
             )
         }

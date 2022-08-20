@@ -1,7 +1,6 @@
 package com.trevorwiebe.clothesline.data.local.dao
 
 import androidx.room.*
-import com.trevorwiebe.clothesline.data.local.entities.ClothesTypeEntity
 import com.trevorwiebe.clothesline.data.local.entities.ClothesWornEntity
 import kotlinx.coroutines.flow.Flow
 

@@ -1,15 +1,12 @@
 package com.trevorwiebe.clothesline.data.repository
 
-import android.util.Log
-import com.trevorwiebe.clothesline.data.local.dao.ClothesTypeDao
+import com.trevorwiebe.clothesline.data.local.dao.ClothesCategoryDao
 import com.trevorwiebe.clothesline.data.local.dao.ClothesWornDao
-import com.trevorwiebe.clothesline.data.local.entities.ClothesTypeEntity
-import com.trevorwiebe.clothesline.data.local.entities.ClothesWornEntity
 import com.trevorwiebe.clothesline.data.mapper.toClothesTypeEntity
 import com.trevorwiebe.clothesline.data.mapper.toClothesTypeModel
 import com.trevorwiebe.clothesline.data.mapper.toClothesWornEntity
 import com.trevorwiebe.clothesline.data.mapper.toClothesWornModel
-import com.trevorwiebe.clothesline.domain.model.ClothesTypeModel
+import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
 import kotlinx.coroutines.flow.Flow
@@ -18,7 +15,7 @@ import java.time.LocalDate
 
 class ClothesLineRepositoryImpl(
     private val clothesWornDao: ClothesWornDao,
-    private val clothesTypeDao: ClothesTypeDao
+    private val clothesCategoryDao: ClothesCategoryDao
 ): ClothesLineRepository {
 
     override suspend fun insertClothesWorn(clothesWorn: ClothesWornModel) {
@@ -32,18 +29,18 @@ class ClothesLineRepositoryImpl(
             }
     }
 
-    override suspend fun insertClothesType(clothesTypeModel: ClothesTypeModel) {
-        clothesTypeDao.insertClothesType(clothesTypeModel.toClothesTypeEntity())
+    override suspend fun insertClothesType(clothesCategoryModel: ClothesCategoryModel) {
+        clothesCategoryDao.insertClothesCategory(clothesCategoryModel.toClothesTypeEntity())
     }
 
-    override fun getClothesTypes(): Flow<List<ClothesTypeModel>> {
-        return clothesTypeDao.getClothesTypes()
+    override fun getClothesTypes(): Flow<List<ClothesCategoryModel>> {
+        return clothesCategoryDao.getClothesCategory()
             .map { entities ->
                 entities.map {it.toClothesTypeModel()}
             }
     }
 
-    override suspend fun deleteClothesType(clothesTypeModel: ClothesTypeModel) {
-        clothesTypeDao.deleteClothesType(clothesTypeModel.toClothesTypeEntity())
+    override suspend fun deleteClothesType(clothesCategoryModel: ClothesCategoryModel) {
+        clothesCategoryDao.deleteClothesCategory(clothesCategoryModel.toClothesTypeEntity())
     }
 }

@@ -1,30 +1,27 @@
-package com.trevorwiebe.clothesline.presentation.ui.screens.addclothestype
+package com.trevorwiebe.clothesline.presentation.ui.screens.manageclothescategory
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.trevorwiebe.clothesline.core.util.UiEvent
-import com.trevorwiebe.clothesline.domain.model.ClothesTypeModel
-import com.trevorwiebe.clothesline.domain.use_cases.addclothestypeusecases.AddClothesTypeUseCases
+import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
+import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.ManageClothesCategoryUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AddClothesTypeViewModel @Inject constructor(
-    private val addClothesTypeUseCases: AddClothesTypeUseCases
+class ManageClothesCategoryViewModel @Inject constructor(
+    private val manageClothesCategoryUseCases: ManageClothesCategoryUseCases
 ): ViewModel() {
 
     val TAG = "AddClothesTypeViewModel"
 
-    var state by mutableStateOf(AddClothesTypeState())
+    var state by mutableStateOf(ManangeClothesCategoryState())
         private set
 
     private var getClothesTypes: Job? = null
@@ -33,41 +30,41 @@ class AddClothesTypeViewModel @Inject constructor(
         refreshClothsTypes()
     }
 
-    fun onEvent(event: AddClothesTypeEvent){
+    fun onEvent(event: ManageClothesCategoryEvent){
         when(event){
-            is AddClothesTypeEvent.OnClothesTypeAdded -> {
+            is ManageClothesCategoryEvent.OnClothesCategoryAdded -> {
                 addClothesType()
             }
-            is AddClothesTypeEvent.OnClothesTypeChange -> {
+            is ManageClothesCategoryEvent.OnClothesCategoryChange -> {
                 state = state.copy(
                     clothesTypeString = event.name
                 )
             }
-            is AddClothesTypeEvent.OnClothesTypeDelete -> {
-                deleteClothesType(event.clothesTypeModel)
+            is ManageClothesCategoryEvent.OnClothesCategoryDelete -> {
+                deleteClothesType(event.clothesCategoryModel)
             }
         }
     }
 
     private fun addClothesType(){
         viewModelScope.launch {
-            addClothesTypeUseCases.addClothesTypeUC(
+            manageClothesCategoryUseCases.addClothesCategoryUC(
                 name = state.clothesTypeString
             )
         }
     }
 
-    private fun deleteClothesType(clothesTypeModel: ClothesTypeModel){
+    private fun deleteClothesType(clothesCategoryModel: ClothesCategoryModel){
         viewModelScope.launch {
-            addClothesTypeUseCases.deleteClothesTypeUC(
-                clothesTypeModel = clothesTypeModel
+            manageClothesCategoryUseCases.deleteClothesCategoryUC(
+                clothesCategoryModel = clothesCategoryModel
             )
         }
     }
 
     private fun refreshClothsTypes(){
         getClothesTypes?.cancel()
-        getClothesTypes = addClothesTypeUseCases.getClothesTypeUC()
+        getClothesTypes = manageClothesCategoryUseCases.getClothesCategoryUC()
             .onEach { clothesModel ->
                 state = state.copy(
                     clothesTypesList = clothesModel,
