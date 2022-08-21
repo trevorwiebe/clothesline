@@ -30,7 +30,7 @@ fun ProfileImageDisplay(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(spacing.radiusMedium))
+            .clip(RoundedCornerShape(spacing.radius_two))
     ) {
         Column(
             modifier = Modifier
@@ -42,7 +42,7 @@ fun ProfileImageDisplay(
                 modifier = Modifier
                     .size(150.dp)
                     .padding(spacing.spaceLarge)
-                    .clip(RoundedCornerShape(spacing.radiusMedium)),
+                    .clip(RoundedCornerShape(spacing.radius_two)),
                 painter = rememberImagePainter(
                     data = imageUrl,
                     builder = {

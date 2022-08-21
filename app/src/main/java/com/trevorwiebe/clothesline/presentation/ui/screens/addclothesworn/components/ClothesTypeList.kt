@@ -21,7 +21,7 @@ fun ClothesTypeList(
 
     Row(
         modifier = Modifier
-            .clip(RoundedCornerShape(spacing.radiusMedium))
+            .clip(RoundedCornerShape(spacing.radius_two))
             .background(MaterialTheme.colors.primaryVariant)
             .padding(spacing.spaceMedium)
             .fillMaxWidth()

@@ -23,7 +23,7 @@ fun ActionButton(
     val spacing = LocalSpacing.current
     Row(
         modifier = modifier
-            .clip(RoundedCornerShape(spacing.radiusMedium))
+            .clip(RoundedCornerShape(spacing.radius_two))
             .clickable { onClick() }
             .fillMaxWidth()
             .background(color)

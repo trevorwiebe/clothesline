@@ -39,7 +39,7 @@ fun ProfileRow(
     val spacing = LocalSpacing.current
     Row(
         modifier = Modifier
-            .clip(RoundedCornerShape(spacing.radiusMedium))
+            .clip(RoundedCornerShape(spacing.radius_two))
             .fillMaxWidth()
             .clickable { onClick() }
             .background(MaterialTheme.colors.primaryVariant)
@@ -47,7 +47,7 @@ fun ProfileRow(
     ) {
         Icon(
             modifier = Modifier
-                .clip(RoundedCornerShape(spacing.radiusMedium))
+                .clip(RoundedCornerShape(spacing.radius_two))
                 .background(color)
                 .padding(spacing.spaceSmall),
             imageVector = icon,

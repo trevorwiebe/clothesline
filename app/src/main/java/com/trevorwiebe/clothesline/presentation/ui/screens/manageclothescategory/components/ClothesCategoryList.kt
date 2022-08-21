@@ -32,7 +32,7 @@ fun ClothesTypeList(
                 top = spacing.spaceExtraSmall,
                 bottom = spacing.spaceExtraSmall
             )
-            .clip(RoundedCornerShape(spacing.radiusMedium))
+            .clip(RoundedCornerShape(spacing.radius_two))
             .fillMaxWidth()
     ){
         Row(
