@@ -9,6 +9,7 @@ fun ClothesModel.toClothesEntity(): ClothesEntity{
     return ClothesEntity(
         primaryKey = primaryKey,
         name = name,
+        clothesTypeId = clothesTypeId,
         friendlyId = friendlyId,
         imageURL = imageUrl,
         datePurchasedDay = datePurchased.dayOfMonth,
@@ -22,6 +23,7 @@ fun ClothesEntity.toClothesModel(): ClothesModel{
     return ClothesModel(
         primaryKey = primaryKey,
         name = name,
+        clothesTypeId = clothesTypeId,
         friendlyId = friendlyId,
         imageUrl = imageURL,
         datePurchased = LocalDate.of(datePurchasedYear, datePurchasedMonth, datePurchasedDay),

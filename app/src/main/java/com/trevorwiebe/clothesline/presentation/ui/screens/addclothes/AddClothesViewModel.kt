@@ -51,7 +51,7 @@ class AddClothesViewModel @Inject constructor(
             }
             is AddClothesEvent.OnClothesSaved -> {
                 saveClothes(
-                    state.selectedClothesCategoryId,
+                    state.selectedClothesCategoryModel.primaryKey!!,
                     state.name,
                     state.friendlyId,
                     state.datePurchased,
@@ -83,7 +83,7 @@ class AddClothesViewModel @Inject constructor(
     }
 
     private fun saveClothes(clothesTypeId: Int, name: String, friendlyId: String, datePurchased: LocalDate, purchasePrice: Long){
-        val clothesModel = ClothesModel(null, name, friendlyId, null, datePurchased, purchasePrice)
+        val clothesModel = ClothesModel(null, name, clothesTypeId, friendlyId, null, datePurchased, purchasePrice)
         viewModelScope.launch {
             manageClothesUC.addClothesUC(clothesModel)
         }
