@@ -1,41 +1,42 @@
-package com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes
+package com.trevorwiebe.clothesline.presentation.ui.screens.addclothes
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.ManageClothesCategoryUseCases
+import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.ManageClothesState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ManageClothesViewModel @Inject constructor(
-    private val manageClothesCategoryUseCases: ManageClothesCategoryUseCases
+class AddClothesViewModel @Inject constructor(
+    private val manageClothesCategoryUseCases: ManageClothesCategoryUseCases,
 ): ViewModel() {
+
+    private val TAG = "AddClothesViewModel"
 
     private var getClothesTypes: Job? = null
 
-    var state by mutableStateOf(ManageClothesState())
+    var state by mutableStateOf(AddClothesState())
         private set
 
     init{
         refreshClothesTypes()
     }
 
-    fun onEvent(event: ManageClothesEvent){
+    fun onEvent(event: AddClothesEvent){
         when(event){
-            is ManageClothesEvent.OnClothesCategorySelected -> {
-                state = state.copy(
-                    selectedClothesCategory = event.clothesCategoryModel
-                )
+            is AddClothesEvent.OnClothesSaved -> {
+
             }
-            is ManageClothesEvent.OnAddClothesClicked -> {
+            is AddClothesEvent.OnClothesCategorySelected -> {
 
             }
         }
@@ -46,15 +47,10 @@ class ManageClothesViewModel @Inject constructor(
         getClothesTypes = manageClothesCategoryUseCases.getClothesCategoryUC()
             .onEach { clothesCategoryModel ->
                 state = state.copy(
-                    clothesCategoryList = clothesCategoryModel,
-                    selectedClothesCategory = clothesCategoryModel[0]
+                    clothesCategoryList = clothesCategoryModel
                 )
             }
             .launchIn(viewModelScope)
-    }
-
-    private fun refreshClothes(){
-
     }
 
 }

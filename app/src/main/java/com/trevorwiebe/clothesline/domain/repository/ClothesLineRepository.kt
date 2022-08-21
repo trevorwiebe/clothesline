@@ -30,4 +30,6 @@ interface ClothesLineRepository {
     suspend fun deleteClothesType(clothesCategoryModel: ClothesCategoryModel)
 
     fun getClothesTypes(): Flow<List<ClothesCategoryModel>>
+
+    fun getClothesTypeById(id: Int): Flow<ClothesCategoryModel>
 }

@@ -60,6 +60,11 @@ class ClothesLineRepositoryImpl(
             }
     }
 
+    override fun getClothesTypeById(id: Int): Flow<ClothesCategoryModel> {
+        return clothesCategoryDao.getClothesCategoryByID(id)
+            .map { it.toClothesTypeModel() }
+    }
+
     override suspend fun deleteClothesType(clothesCategoryModel: ClothesCategoryModel) {
         clothesCategoryDao.deleteClothesCategory(clothesCategoryModel.toClothesTypeEntity())
     }

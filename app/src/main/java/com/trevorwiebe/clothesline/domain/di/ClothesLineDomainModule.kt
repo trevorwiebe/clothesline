@@ -1,10 +1,7 @@
 package com.trevorwiebe.clothesline.domain.di
 
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
-import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.AddClothesCategoryUC
-import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.ManageClothesCategoryUseCases
-import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.DeleteClothesCategoryUC
-import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.GetClothesCategoryUC
+import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.*
 import com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.ViewClothesUseCases
 import com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.GetClothesWorn
 import dagger.Module
@@ -25,7 +22,8 @@ object ClothesLineDomainModule {
         return ManageClothesCategoryUseCases(
             addClothesCategoryUC = AddClothesCategoryUC(repository),
             getClothesCategoryUC = GetClothesCategoryUC(repository),
-            deleteClothesCategoryUC = DeleteClothesCategoryUC(repository)
+            deleteClothesCategoryUC = DeleteClothesCategoryUC(repository),
+            getClothesCategoryByIdUC = GetClothesCategoryByIdUC(repository)
         )
     }
 

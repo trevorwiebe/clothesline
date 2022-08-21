@@ -22,8 +22,7 @@ fun CustomOutlineTextField(
     val spacing = LocalSpacing.current
     OutlinedTextField(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = spacing.spaceMedium, end = spacing.spaceMedium),
+            .fillMaxWidth(),
         value = contentValue,
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = MaterialTheme.colors.secondary,

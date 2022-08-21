@@ -14,7 +14,7 @@ interface ClothesCategoryDao {
     fun getClothesCategory(): Flow<List<ClothesCategoryEntity>>
 
     @Query("SELECT * FROM clothes_category WHERE primaryKey = :id")
-    fun getClothesCategoryByID(id: Int): ClothesCategoryEntity
+    fun getClothesCategoryByID(id: Int): Flow<ClothesCategoryEntity>
 
     @Insert
     suspend fun insertClothesCategory(clothesCategoryEntity: ClothesCategoryEntity)

@@ -4,5 +4,6 @@ import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 
 sealed class ManageClothesEvent{
     data class OnClothesCategorySelected(val clothesCategoryModel: ClothesCategoryModel): ManageClothesEvent()
+    data class OnAddClothesClicked(val clothesId: Int): ManageClothesEvent()
 }
 

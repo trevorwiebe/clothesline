@@ -3,5 +3,6 @@ package com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_useca
 data class ManageClothesCategoryUseCases(
     val addClothesCategoryUC: AddClothesCategoryUC,
     val getClothesCategoryUC: GetClothesCategoryUC,
+    val getClothesCategoryByIdUC: GetClothesCategoryByIdUC,
     val deleteClothesCategoryUC: DeleteClothesCategoryUC
 )

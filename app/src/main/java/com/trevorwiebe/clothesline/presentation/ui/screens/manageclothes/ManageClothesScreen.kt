@@ -18,7 +18,7 @@ import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
 @Composable
 fun ManageClothesScreen(
-    navController: NavHostController,
+    onNavigateToAddClothes: (Int) -> Unit,
     viewModel: ManageClothesViewModel = hiltViewModel()
 ) {
 
@@ -29,7 +29,7 @@ fun ManageClothesScreen(
         floatingActionButton = {
             CustomFloatingActionButton(
                 icon = Icons.Default.Add,
-                onClick = { navController.navigate(Route.ADD_CLOTHES) },
+                onClick = { onNavigateToAddClothes(viewModel.state.selectedClothesCategory.primaryKey!!) },
                 contentDescription = viewModel.state.selectedClothesCategory.name,
                 text = viewModel.state.selectedClothesCategory.name
             )
