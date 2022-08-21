@@ -53,7 +53,7 @@ fun ClothesTypeList(
                 contentDescription = "Delete",
                 tint = MaterialTheme.colors.secondary,
                 modifier = Modifier
-                    .clip(RoundedCornerShape(spacing.radiusMedium))
+                    .clip(RoundedCornerShape(spacing.radius_two))
                     .clickable { onDeleteClicked() }
                     .padding(spacing.spaceMedium)
             )

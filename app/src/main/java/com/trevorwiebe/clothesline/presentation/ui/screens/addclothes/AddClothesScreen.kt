@@ -35,13 +35,13 @@ fun AddClothesScreen(
         CustomOutlineTextField(
             labelValue = "Name",
             contentValue = state.name,
-            onValueChange = {}
+            onValueChange = {viewModel.onEvent(AddClothesEvent.OnNameChanged(it))}
         )
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
         CustomOutlineTextField(
             labelValue = "Optional ID",
             contentValue = state.friendlyId,
-            onValueChange = {}
+            onValueChange = {viewModel.onEvent(AddClothesEvent.OnIdChanged(it))}
         )
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
         CustomOutlineTextField(
@@ -58,7 +58,7 @@ fun AddClothesScreen(
         Spacer(modifier = Modifier.height(spacing.spaceMedium))
         ActionButton(
             text = "Save ${viewModel.state.selectedClothesCategoryModel.name}",
-            onClick = { /*TODO*/ })
+            onClick = { viewModel.onEvent(AddClothesEvent.OnClothesSaved) })
 
     }
 

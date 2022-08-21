@@ -5,6 +5,10 @@ import com.trevorwiebe.clothesline.domain.model.ClothesModel
 
 sealed class AddClothesEvent {
     data class OnClothesCategorySelected(val clothesCategoryModel: ClothesCategoryModel): AddClothesEvent()
-    data class OnClothesSaved(val clothesModel: ClothesModel): AddClothesEvent()
+    object OnClothesSaved: AddClothesEvent()
     object OnOpenClothesCategorySelector: AddClothesEvent()
+    data class OnNameChanged(val name: String): AddClothesEvent()
+    data class OnIdChanged(val friendlyId: String): AddClothesEvent()
+    data class OnDateChanged(val date: String): AddClothesEvent()
+    data class OnPurchasePriceChanged(val price: String): AddClothesEvent()
 }
