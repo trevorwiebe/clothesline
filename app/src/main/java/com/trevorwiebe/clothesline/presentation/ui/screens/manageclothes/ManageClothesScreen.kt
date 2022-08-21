@@ -13,6 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.trevorwiebe.clothesline.presentation.navigation.Route
 import com.trevorwiebe.clothesline.presentation.ui.components.CustomFloatingActionButton
+import com.trevorwiebe.clothesline.presentation.ui.components.allTextToCaps
 import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.components.ClothesCategoryBubble
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
@@ -31,7 +32,7 @@ fun ManageClothesScreen(
                 icon = Icons.Default.Add,
                 onClick = { onNavigateToAddClothes(viewModel.state.selectedClothesCategory.primaryKey!!) },
                 contentDescription = viewModel.state.selectedClothesCategory.name,
-                text = viewModel.state.selectedClothesCategory.name
+                text = allTextToCaps(text = viewModel.state.selectedClothesCategory.name)
             )
         },
         content = {
