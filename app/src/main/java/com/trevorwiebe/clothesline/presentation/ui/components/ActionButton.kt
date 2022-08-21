@@ -32,7 +32,7 @@ fun ActionButton(
         verticalAlignment = Alignment.CenterVertically
     ){
         Text(
-            text = text,
+            text = allTextToCaps(text = text),
             style = MaterialTheme.typography.button,
             color = MaterialTheme.colors.onSecondary
         )
