@@ -23,7 +23,11 @@ fun AddClothesTypeScreen(
     val TAG = "AddClothesTypeScreen"
     val keyboardController = LocalSoftwareKeyboardController.current
     val state = viewModel.state
-    LazyColumn(modifier = Modifier.fillMaxSize()){
+    LazyColumn(
+        modifier = Modifier
+            .padding(spacing.spaceMedium)
+            .fillMaxSize()
+    ){
         item {
             Column(
                 modifier = Modifier.fillMaxSize()
@@ -38,7 +42,6 @@ fun AddClothesTypeScreen(
                 )
                 Spacer(modifier = Modifier.height(spacing.spaceLarge))
                 ActionButton(
-                    modifier = Modifier.padding(start = spacing.spaceMedium, end = spacing.spaceMedium),
                     text = "Save clothes category",
                     onClick = {
                         viewModel.onEvent(
@@ -51,7 +54,7 @@ fun AddClothesTypeScreen(
                 Spacer(modifier = Modifier.height(spacing.spaceMedium))
                 Text(
                     text = "Current clothes categories",
-                    modifier = Modifier.padding(start = spacing.spaceMedium, end = spacing.spaceMedium,top = spacing.spaceSmall, bottom = spacing.spaceSmall)
+                    modifier = Modifier.padding(top = spacing.spaceSmall, bottom = spacing.spaceSmall)
                 )
             }
         }

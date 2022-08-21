@@ -21,7 +21,7 @@ class ManageClothesCategoryViewModel @Inject constructor(
 
     val TAG = "AddClothesTypeViewModel"
 
-    var state by mutableStateOf(ManangeClothesCategoryState())
+    var state by mutableStateOf(ManageClothesCategoryState())
         private set
 
     private var getClothesTypes: Job? = null

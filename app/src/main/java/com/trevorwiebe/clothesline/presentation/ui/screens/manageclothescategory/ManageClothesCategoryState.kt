@@ -2,7 +2,7 @@ package com.trevorwiebe.clothesline.presentation.ui.screens.manageclothescategor
 
 import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 
-data class ManangeClothesCategoryState(
+data class ManageClothesCategoryState(
     val clothesTypeString: String = "",
     val clothesTypesList: List<ClothesCategoryModel> = emptyList()
 )

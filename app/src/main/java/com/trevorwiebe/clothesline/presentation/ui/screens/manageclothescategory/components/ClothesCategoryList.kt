@@ -29,10 +29,8 @@ fun ClothesTypeList(
         modifier = Modifier
             .background(MaterialTheme.colors.background)
             .padding(
-                start = spacing.spaceMedium,
-                end = spacing.spaceMedium,
-                top = spacing.spaceSmall,
-                bottom = spacing.spaceSmall
+                top = spacing.spaceExtraSmall,
+                bottom = spacing.spaceExtraSmall
             )
             .clip(RoundedCornerShape(spacing.radiusMedium))
             .fillMaxWidth()
@@ -46,7 +44,7 @@ fun ClothesTypeList(
         ) {
             Text(
                 text = clothesCategoryModel.name,
-                color = MaterialTheme.colors.onPrimary,
+                color = MaterialTheme.colors.onBackground,
                 modifier = Modifier
                     .padding(start = spacing.spaceMedium, end = spacing.spaceMedium),
             )
