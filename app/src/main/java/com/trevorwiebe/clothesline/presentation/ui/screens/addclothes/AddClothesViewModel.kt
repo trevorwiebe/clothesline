@@ -37,7 +37,15 @@ class AddClothesViewModel @Inject constructor(
 
             }
             is AddClothesEvent.OnClothesCategorySelected -> {
-
+                state = state.copy(
+                    selectedClothesCategoryModel = event.clothesCategoryModel,
+                    isClothesCategoryOpen = !state.isClothesCategoryOpen
+                )
+            }
+            is AddClothesEvent.OnOpenClothesCategorySelector -> {
+                state = state.copy(
+                    isClothesCategoryOpen = !state.isClothesCategoryOpen
+                )
             }
         }
     }

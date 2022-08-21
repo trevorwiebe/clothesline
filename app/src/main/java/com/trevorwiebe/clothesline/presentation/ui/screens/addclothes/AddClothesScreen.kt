@@ -30,10 +30,8 @@ fun AddClothesScreen(
 
     Column(modifier = Modifier.padding(spacing.spaceMedium)) {
         ClothesCategorySelector(
-            clothesCategorySelected = state.selectedClothesCategoryModel,
-            onClick = {}
+            onOpen = { viewModel.onEvent(AddClothesEvent.OnOpenClothesCategorySelector) }
         )
-        Spacer(modifier = Modifier.height(spacing.spaceMedium))
         CustomOutlineTextField(
             labelValue = "Name",
             contentValue = state.name,

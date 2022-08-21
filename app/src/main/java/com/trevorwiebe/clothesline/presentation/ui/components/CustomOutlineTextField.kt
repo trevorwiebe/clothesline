@@ -34,7 +34,7 @@ fun CustomOutlineTextField(
         keyboardOptions = KeyboardOptions.Default.copy(
             capitalization = KeyboardCapitalization.Sentences
         ),
-        shape = RoundedCornerShape(spacing.radiusMedium),
+        shape = RoundedCornerShape(spacing.radius_two),
         onValueChange = onValueChange,
         label = { Text(text = labelValue) }
     )

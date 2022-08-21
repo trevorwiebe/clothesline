@@ -10,5 +10,6 @@ data class AddClothesState (
     val name: String = "",
     val friendlyId: String = "",
     val datePurchased: LocalDate = LocalDate.now(),
-    val purchasedPrice: Long = 0
+    val purchasedPrice: Long = 0,
+    val isClothesCategoryOpen: Boolean = false
 )
