@@ -8,5 +8,5 @@ import java.time.format.DateTimeFormatter
 fun parseDate(
     date: LocalDate
 ): String {
-    return DateTimeFormatter.ofPattern("LLLL d").format(date)
+    return DateTimeFormatter.ofPattern("M/d/YYYY").format(date)
 }
