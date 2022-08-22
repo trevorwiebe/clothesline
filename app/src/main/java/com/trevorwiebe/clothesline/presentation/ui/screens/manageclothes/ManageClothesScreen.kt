@@ -1,13 +1,17 @@
 package com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -15,6 +19,7 @@ import com.trevorwiebe.clothesline.presentation.navigation.Route
 import com.trevorwiebe.clothesline.presentation.ui.components.CustomFloatingActionButton
 import com.trevorwiebe.clothesline.presentation.ui.components.allTextToCaps
 import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.components.ClothesCategoryBubble
+import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.components.ClothesList
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
 @Composable
@@ -46,6 +51,13 @@ fun ManageClothesScreen(
                             onClick = {viewModel.onEvent(ManageClothesEvent.OnClothesCategorySelected(clothesCategoryModel))}
                         )
                         Spacer(modifier = Modifier.width(spacing.spaceMedium))
+                    }
+                }
+                Spacer(modifier = Modifier.height(spacing.spaceMedium))
+                LazyColumn(){
+                    items(viewModel.state.clothesList){ clothesModel ->
+                        Divider(color = MaterialTheme.colors.primaryVariant, thickness = 1.dp)
+                        ClothesList(clothesModel = clothesModel)
                     }
                 }
             }

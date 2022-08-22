@@ -13,6 +13,8 @@ interface ClothesLineRepository {
 
     fun getClothes(): Flow<List<ClothesModel>>
 
+    fun getClothesByClothesTypeId(id: Int): Flow<List<ClothesModel>>
+
     suspend fun deleteClothesType(clothes: ClothesModel)
 
 

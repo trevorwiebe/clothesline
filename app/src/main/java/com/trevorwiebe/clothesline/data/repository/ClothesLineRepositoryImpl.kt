@@ -36,6 +36,13 @@ class ClothesLineRepositoryImpl(
         clothesDao.deleteClothes(clothes.toClothesEntity())
     }
 
+    override fun getClothesByClothesTypeId(id: Int): Flow<List<ClothesModel>> {
+        return clothesDao.getClothesByClothesTypeId(id)
+            .map { entities ->
+                entities.map {it.toClothesModel()}
+            }
+    }
+
     // clothes worn
     override suspend fun insertClothesWorn(clothesWorn: ClothesWornModel) {
         clothesWornDao.insertClothesWorn(clothesWorn.toClothesWornEntity())

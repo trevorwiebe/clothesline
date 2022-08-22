@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.ManageClothesCategoryUseCases
+import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.ManageClothesUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Job
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ManageClothesViewModel @Inject constructor(
-    private val manageClothesCategoryUseCases: ManageClothesCategoryUseCases
+    private val manageClothesCategoryUseCases: ManageClothesCategoryUseCases,
+    private val manageClothesUseCases: ManageClothesUseCases
 ): ViewModel() {
 
     private var getClothesTypes: Job? = null
@@ -26,6 +28,7 @@ class ManageClothesViewModel @Inject constructor(
 
     init{
         refreshClothesTypes()
+        getClothesByClothesTypeId(state.selectedClothesCategory.primaryKey!!)
     }
 
     fun onEvent(event: ManageClothesEvent){
@@ -34,6 +37,7 @@ class ManageClothesViewModel @Inject constructor(
                 state = state.copy(
                     selectedClothesCategory = event.clothesCategoryModel
                 )
+                getClothesByClothesTypeId(state.selectedClothesCategory.primaryKey!!)
             }
             is ManageClothesEvent.OnAddClothesClicked -> {
 
@@ -53,8 +57,14 @@ class ManageClothesViewModel @Inject constructor(
             .launchIn(viewModelScope)
     }
 
-    private fun refreshClothes(){
-
+    private fun getClothesByClothesTypeId(id: Int){
+        manageClothesUseCases.getClothesByClothesCategoryIdUC(id)
+            .onEach { clothesModelsList ->
+                state = state.copy(
+                    clothesList = clothesModelsList
+                )
+            }
+            .launchIn(viewModelScope)
     }
 
 }
