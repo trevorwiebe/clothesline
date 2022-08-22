@@ -6,14 +6,12 @@ import androidx.compose.runtime.Composable
 import java.util.*
 
 @Composable
-fun parseCurrency(
+fun parseLongToCurrency(
     amount: Long
 ): String {
-    val formatter = getCurrencyInstance(Locale("en"))
+    val formatter = getCurrencyInstance(Locale.getDefault())
 
 //    var currencyString = amount.toString()
-//
-//    if (currencyString.length <= 1) currencyString = "0${currencyString}"
 //
 //    currencyString = StringBuilder().apply {
 //        insert((currencyString.length - 2), ".")

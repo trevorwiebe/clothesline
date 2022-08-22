@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.trevorwiebe.clothesline.presentation.ui.components.ActionButton
 import com.trevorwiebe.clothesline.presentation.ui.components.CustomOutlineTextField
-import com.trevorwiebe.clothesline.presentation.ui.components.parseCurrency
+import com.trevorwiebe.clothesline.presentation.ui.components.parseLongToCurrency
 import com.trevorwiebe.clothesline.presentation.ui.components.parseDate
 import com.trevorwiebe.clothesline.presentation.ui.screens.addclothes.components.ClothesCategorySelector
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
@@ -52,7 +52,7 @@ fun AddClothesScreen(
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
         CustomOutlineTextField(
             labelValue = "Purchase price",
-            contentValue = parseCurrency(amount = state.purchasedPrice),
+            contentValue = parseLongToCurrency(amount = state.purchasedPrice),
             onValueChange = {}
         )
         Spacer(modifier = Modifier.height(spacing.spaceMedium))

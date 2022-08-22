@@ -13,12 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import com.trevorwiebe.clothesline.presentation.navigation.Route
 import com.trevorwiebe.clothesline.presentation.ui.components.CustomFloatingActionButton
 import com.trevorwiebe.clothesline.presentation.ui.components.allTextToCaps
-import com.trevorwiebe.clothesline.presentation.ui.components.parseCurrency
+import com.trevorwiebe.clothesline.presentation.ui.components.parseLongToCurrency
 import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.components.ClothesCategoryBubble
 import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.components.ClothesList
 import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.components.ClothesWorthPane
@@ -60,7 +57,7 @@ fun ManageClothesScreen(
                     item{
                         ClothesWorthPane(
                             clothesCategoryModel = viewModel.state.selectedClothesCategory,
-                            totalAmount = parseCurrency(amount = viewModel.state.clothesWorth)
+                            totalAmount = parseLongToCurrency(amount = viewModel.state.clothesWorth)
                         )
                         Spacer(modifier = Modifier.height(spacing.spaceSmall))
                     }
