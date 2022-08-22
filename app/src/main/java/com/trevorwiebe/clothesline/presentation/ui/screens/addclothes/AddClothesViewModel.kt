@@ -7,6 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.trevorwiebe.clothesline.domain.model.ClothesModel
+import com.trevorwiebe.clothesline.domain.use_cases.ParseCurrencyToLong
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.ManageClothesCategoryUseCases
 import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.GetClothesUC
 import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.ManageClothesUseCases
@@ -23,7 +24,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AddClothesViewModel @Inject constructor(
     private val manageClothesCategoryUseCases: ManageClothesCategoryUseCases,
-    private val manageClothesUC: ManageClothesUseCases
+    private val manageClothesUC: ManageClothesUseCases,
+    private val parseCurrencyToLong: ParseCurrencyToLong
 ): ViewModel() {
 
     private val TAG = "AddClothesViewModel"
@@ -48,6 +50,10 @@ class AddClothesViewModel @Inject constructor(
             is AddClothesEvent.OnDateChanged -> {
             }
             is AddClothesEvent.OnPurchasePriceChanged -> {
+                state = state.copy(
+                    purchasedPrice = parseCurrencyToLong(event.price)
+                )
+                Log.d(TAG, "onEvent: " + event.price)
             }
             is AddClothesEvent.OnClothesSaved -> {
                 saveClothes(

@@ -1,6 +1,7 @@
 package com.trevorwiebe.clothesline.domain.di
 
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
+import com.trevorwiebe.clothesline.domain.use_cases.ParseCurrencyToLong
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.*
 import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.*
 import com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.ViewClothesUseCases
@@ -14,6 +15,12 @@ import dagger.hilt.android.scopes.ViewModelScoped
 @Module
 @InstallIn(ViewModelComponent::class)
 object ClothesLineDomainModule {
+
+    @ViewModelScoped
+    @Provides
+    fun provideClothesLine_ParseCurrencyToLong(): ParseCurrencyToLong{
+        return ParseCurrencyToLong()
+    }
 
     @ViewModelScoped
     @Provides

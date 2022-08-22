@@ -39,7 +39,6 @@ class ManageClothesViewModel @Inject constructor(
                     selectedClothesCategory = event.clothesCategoryModel
                 )
                 getClothesByClothesTypeId(state.selectedClothesCategory.primaryKey!!)
-                calculateClothesWorth(state.clothesList)
             }
             is ManageClothesEvent.OnAddClothesClicked -> {
 
@@ -65,6 +64,7 @@ class ManageClothesViewModel @Inject constructor(
                 state = state.copy(
                     clothesList = clothesModelsList
                 )
+                calculateClothesWorth(clothesModelsList)
             }
             .launchIn(viewModelScope)
     }
