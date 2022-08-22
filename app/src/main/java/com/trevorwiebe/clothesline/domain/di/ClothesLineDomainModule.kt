@@ -2,10 +2,7 @@ package com.trevorwiebe.clothesline.domain.di
 
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.*
-import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.AddClothesUC
-import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.GetClothesByClothesCategoryIdUC
-import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.GetClothesUC
-import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.ManageClothesUseCases
+import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.*
 import com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.ViewClothesUseCases
 import com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.GetClothesWorn
 import dagger.Module
@@ -26,7 +23,8 @@ object ClothesLineDomainModule {
         return ManageClothesUseCases(
             addClothesUC = AddClothesUC(repository),
             getClothesUC = GetClothesUC(repository),
-            getClothesByClothesCategoryIdUC = GetClothesByClothesCategoryIdUC(repository)
+            getClothesByClothesCategoryIdUC = GetClothesByClothesCategoryIdUC(repository),
+            calculateClothesWorthUC = CalculateClothesWorthUC()
         )
     }
 

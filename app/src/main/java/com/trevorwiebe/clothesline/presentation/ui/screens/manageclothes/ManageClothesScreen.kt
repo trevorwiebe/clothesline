@@ -18,8 +18,10 @@ import androidx.navigation.NavHostController
 import com.trevorwiebe.clothesline.presentation.navigation.Route
 import com.trevorwiebe.clothesline.presentation.ui.components.CustomFloatingActionButton
 import com.trevorwiebe.clothesline.presentation.ui.components.allTextToCaps
+import com.trevorwiebe.clothesline.presentation.ui.components.parseCurrency
 import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.components.ClothesCategoryBubble
 import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.components.ClothesList
+import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.components.ClothesWorthPane
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
 @Composable
@@ -54,7 +56,14 @@ fun ManageClothesScreen(
                     }
                 }
                 Spacer(modifier = Modifier.height(spacing.spaceMedium))
-                LazyColumn(){
+                LazyColumn {
+                    item{
+                        ClothesWorthPane(
+                            clothesCategoryModel = viewModel.state.selectedClothesCategory,
+                            totalAmount = parseCurrency(amount = viewModel.state.clothesWorth)
+                        )
+                        Spacer(modifier = Modifier.height(spacing.spaceSmall))
+                    }
                     items(viewModel.state.clothesList){ clothesModel ->
                         Divider(color = MaterialTheme.colors.primaryVariant, thickness = 1.dp)
                         ClothesList(clothesModel = clothesModel)

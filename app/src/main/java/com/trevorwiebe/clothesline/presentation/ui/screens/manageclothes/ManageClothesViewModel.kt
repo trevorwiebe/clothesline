@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.trevorwiebe.clothesline.domain.model.ClothesModel
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.ManageClothesCategoryUseCases
 import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.ManageClothesUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -38,6 +39,7 @@ class ManageClothesViewModel @Inject constructor(
                     selectedClothesCategory = event.clothesCategoryModel
                 )
                 getClothesByClothesTypeId(state.selectedClothesCategory.primaryKey!!)
+                calculateClothesWorth(state.clothesList)
             }
             is ManageClothesEvent.OnAddClothesClicked -> {
 
@@ -65,6 +67,13 @@ class ManageClothesViewModel @Inject constructor(
                 )
             }
             .launchIn(viewModelScope)
+    }
+
+    private fun calculateClothesWorth(clothesList: List<ClothesModel>){
+        val worth = manageClothesUseCases.calculateClothesWorthUC(clothesList)
+        state = state.copy(
+            clothesWorth = worth
+        )
     }
 
 }
