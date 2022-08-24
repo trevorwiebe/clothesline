@@ -1,5 +1,6 @@
 package com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -25,14 +26,15 @@ fun AddClothesWornScreen(
                 text = "Add new Outfit"
             )
         }
-        items(viewModel.state.clothesTypeList){ clothesTypeItem ->
-            Row(modifier = Modifier.padding(
-                start = spacing.spaceMedium,
-                end = spacing.spaceMedium,
-                top = spacing.spaceExtraSmall,
-                bottom = spacing.spaceExtraSmall)
+        items(viewModel.state.clothesUiModelsList){ clothesUiModel ->
+            Row(modifier = Modifier
+                .padding(
+                    start = spacing.spaceMedium,
+                    end = spacing.spaceMedium,
+                    top = spacing.spaceExtraSmall,
+                    bottom = spacing.spaceExtraSmall)
             ){
-                ClothesTypeList(name = clothesTypeItem.name)
+                ClothesTypeList(clothesCategoryModel = clothesUiModel.clothesCategoryModel, clothesList = clothesUiModel.clothesModelList, isExpanded = clothesUiModel.isExpanded)
             }
         }
     }
