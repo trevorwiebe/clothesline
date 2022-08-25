@@ -4,5 +4,6 @@ data class ManageClothesCategoryUseCases(
     val addClothesCategoryUC: AddClothesCategoryUC,
     val getClothesCategoryUC: GetClothesCategoryUC,
     val getClothesCategoryByIdUC: GetClothesCategoryByIdUC,
-    val deleteClothesCategoryUC: DeleteClothesCategoryUC
+    val deleteClothesCategoryUC: DeleteClothesCategoryUC,
+    val getClothesCategoriesAndClothesUC: GetClothesCategoriesAndClothesUC
 )

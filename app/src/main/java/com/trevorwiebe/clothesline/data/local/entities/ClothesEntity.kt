@@ -5,10 +5,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "clothes")
 data class ClothesEntity (
-    @PrimaryKey
-    val primaryKey: Int?,
+    @PrimaryKey(autoGenerate = true)
+    val clothesEntityPrimaryKey: Int = 0,
     val clothesTypeId: Int,
-    val name: String,
+    val clothesName: String,
     val friendlyId: String,
     val imageURL: String?,
     val datePurchasedDay: Int,

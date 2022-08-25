@@ -7,8 +7,8 @@ import kotlin.math.cos
 
 fun ClothesModel.toClothesEntity(): ClothesEntity{
     return ClothesEntity(
-        primaryKey = primaryKey,
-        name = name,
+        clothesEntityPrimaryKey = primaryKey,
+        clothesName = name,
         clothesTypeId = clothesTypeId,
         friendlyId = friendlyId,
         imageURL = imageUrl,
@@ -21,8 +21,8 @@ fun ClothesModel.toClothesEntity(): ClothesEntity{
 
 fun ClothesEntity.toClothesModel(): ClothesModel{
     return ClothesModel(
-        primaryKey = primaryKey,
-        name = name,
+        primaryKey = clothesEntityPrimaryKey,
+        name = clothesName,
         clothesTypeId = clothesTypeId,
         friendlyId = friendlyId,
         imageUrl = imageURL,

@@ -3,7 +3,7 @@ package com.trevorwiebe.clothesline.domain.model
 import java.time.LocalDate
 
 data class ClothesModel(
-    val primaryKey: Int?,
+    val primaryKey: Int = 0,
     val name: String,
     val clothesTypeId: Int,
     val friendlyId: String,

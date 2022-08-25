@@ -44,7 +44,8 @@ object ClothesLineDomainModule {
             addClothesCategoryUC = AddClothesCategoryUC(repository),
             getClothesCategoryUC = GetClothesCategoryUC(repository),
             deleteClothesCategoryUC = DeleteClothesCategoryUC(repository),
-            getClothesCategoryByIdUC = GetClothesCategoryByIdUC(repository)
+            getClothesCategoryByIdUC = GetClothesCategoryByIdUC(repository),
+            getClothesCategoriesAndClothesUC = GetClothesCategoriesAndClothesUC(repository)
         )
     }
 

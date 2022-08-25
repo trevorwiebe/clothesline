@@ -1,5 +1,6 @@
 package com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -17,37 +18,25 @@ import javax.inject.Inject
 @HiltViewModel
 class AddClothesWornViewModel @Inject constructor(
     private val manageClothesCategoryUseCases: ManageClothesCategoryUseCases,
-    private val manageClothesUseCases: ManageClothesUseCases
 ): ViewModel() {
 
     var state by mutableStateOf(AddClothesWornState())
 
     init {
-        loadClothesTypes()
-        loadClothes()
+        loadClothesTypesAndClothes()
     }
 
-    private fun loadClothesTypes(){
-        manageClothesCategoryUseCases.getClothesCategoryUC()
-            .map { clothesTypeModelList ->
+    private fun loadClothesTypesAndClothes(){
+        manageClothesCategoryUseCases.getClothesCategoriesAndClothesUC()
+            .map {
                 state = state.copy(
-                    clothesUiModelsList = clothesTypeModelList.map {
+                    clothesUiModelsList = it.map { clothesMap ->
                         ClothesUiModel(
-                            clothesCategoryModel = it,
-                            clothesModelList = emptyList()
+                            clothesCategoryModel = clothesMap.key,
+                            clothesModelList = clothesMap.value
                         )
                     }
                 )
-            }
-            .launchIn(viewModelScope)
-    }
-    private fun loadClothes(){
-        manageClothesUseCases.getClothesUC()
-            .map { clothesModelList ->
-                state = state.copy(
-
-                )
-            }
-            .launchIn(viewModelScope)
+            }.launchIn(viewModelScope)
     }
 }

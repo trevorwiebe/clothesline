@@ -5,14 +5,14 @@ import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 
 fun ClothesCategoryModel.toClothesTypeEntity(): ClothesCategoryEntity {
     return ClothesCategoryEntity(
-        primaryKey = primaryKey,
-        name = name
+        clothesCategoryPrimaryKey = primaryKey,
+        clothesCategoryName = name
     )
 }
 
 fun ClothesCategoryEntity.toClothesTypeModel(): ClothesCategoryModel {
     return ClothesCategoryModel(
-        primaryKey = primaryKey,
-        name = name
+        primaryKey = clothesCategoryPrimaryKey,
+        name = clothesCategoryName
     )
 }

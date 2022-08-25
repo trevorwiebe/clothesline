@@ -1,9 +1,13 @@
 package com.trevorwiebe.clothesline.data.repository
 
+import android.util.Log
+import androidx.compose.runtime.key
 import com.trevorwiebe.clothesline.data.local.dao.ClothesCategoryDao
 import com.trevorwiebe.clothesline.data.local.dao.ClothesDao
 import com.trevorwiebe.clothesline.data.local.dao.ClothesWornDao
 import com.trevorwiebe.clothesline.data.local.dao.OutfitDao
+import com.trevorwiebe.clothesline.data.local.entities.ClothesCategoryEntity
+import com.trevorwiebe.clothesline.data.local.entities.ClothesEntity
 import com.trevorwiebe.clothesline.data.mapper.*
 import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 import com.trevorwiebe.clothesline.domain.model.ClothesModel
@@ -74,5 +78,21 @@ class ClothesLineRepositoryImpl(
 
     override suspend fun deleteClothesType(clothesCategoryModel: ClothesCategoryModel) {
         clothesCategoryDao.deleteClothesCategory(clothesCategoryModel.toClothesTypeEntity())
+    }
+
+    override fun getClothesCategoryAndClothes(): Flow<Map<ClothesCategoryModel, List<ClothesModel>>> {
+        val clothesMap: Flow<Map<ClothesCategoryEntity, List<ClothesEntity>>> = clothesCategoryDao.getClothesCategoryAndClothes()
+        return clothesMap.map { map1 ->
+                map1.mapKeys { clothesTM ->
+                    Log.d("TAG", "getClothesCategoryAndClothes: " + clothesTM.key)
+                    clothesTM.key.toClothesTypeModel()
+                }
+            }
+            .map { map2 ->
+                map2.mapValues { clothesML ->
+                    clothesML.value.map { clothesM ->
+                    clothesM.toClothesModel() }
+                }
+            }
     }
 }

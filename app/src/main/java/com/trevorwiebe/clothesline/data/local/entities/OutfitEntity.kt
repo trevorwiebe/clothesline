@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "outfit")
 data class OutfitEntity(
     @PrimaryKey(autoGenerate = true)
-    val primaryKey: Int? = null,
+    val outfitEntityPrimaryKey: Int = 0,
     val name: String,
     val dateDay: Int,
     val dateMonth: Int,

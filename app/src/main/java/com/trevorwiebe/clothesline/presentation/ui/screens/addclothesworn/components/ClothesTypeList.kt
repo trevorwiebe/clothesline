@@ -1,5 +1,6 @@
 package com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.components
 
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,13 +17,12 @@ import androidx.compose.ui.draw.clip
 import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 import com.trevorwiebe.clothesline.domain.model.ClothesModel
 import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.AddClothesWornViewModel
+import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.uimodel.ClothesUiModel
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
 @Composable
 fun ClothesTypeList(
-    clothesCategoryModel: ClothesCategoryModel,
-    clothesList: List<ClothesModel>,
-    isExpanded: Boolean
+    clothesUiModel: ClothesUiModel
 ) {
 
     val spacing = LocalSpacing.current
@@ -30,16 +30,21 @@ fun ClothesTypeList(
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(spacing.radius_two))
-            .clickable {  }
+            .clickable { }
             .background(MaterialTheme.colors.primaryVariant)
             .padding(spacing.spaceMedium)
             .fillMaxWidth()
     ) {
         Text(
-            text = clothesCategoryModel.name
+            text = clothesUiModel.clothesCategoryModel.name
         )
-        AnimatedVisibility(visible = isExpanded) {
-
+        AnimatedVisibility(visible = clothesUiModel.isExpanded) {
+            Log.d("TAG2", "ClothesTypeList: " + clothesUiModel.clothesModelList)
+            Column() {
+                clothesUiModel.clothesModelList.forEach{ clothesModel ->
+                    Text(text = clothesModel.name)
+                }
+            }
         }
     }
 

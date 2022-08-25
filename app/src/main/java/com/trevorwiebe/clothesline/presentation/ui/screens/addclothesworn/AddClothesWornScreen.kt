@@ -34,7 +34,7 @@ fun AddClothesWornScreen(
                     top = spacing.spaceExtraSmall,
                     bottom = spacing.spaceExtraSmall)
             ){
-                ClothesTypeList(clothesCategoryModel = clothesUiModel.clothesCategoryModel, clothesList = clothesUiModel.clothesModelList, isExpanded = clothesUiModel.isExpanded)
+                ClothesTypeList(clothesUiModel = clothesUiModel)
             }
         }
     }

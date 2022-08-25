@@ -1,6 +1,6 @@
 package com.trevorwiebe.clothesline.domain.model
 
 data class ClothesCategoryModel(
-    val primaryKey: Int?,
+    val primaryKey: Int = 0,
     val name: String
 )

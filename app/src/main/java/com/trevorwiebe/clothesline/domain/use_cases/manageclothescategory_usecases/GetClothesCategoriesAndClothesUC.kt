@@ -1,16 +1,14 @@
 package com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases
 
 import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
+import com.trevorwiebe.clothesline.domain.model.ClothesModel
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
+import kotlinx.coroutines.flow.Flow
 
-class AddClothesCategoryUC (
+class GetClothesCategoriesAndClothesUC(
     private val repository: ClothesLineRepository
-){
-    suspend operator fun invoke(
-        name: String
-    ){
-        repository.insertClothesType(
-            ClothesCategoryModel(0, name)
-        )
+) {
+    operator fun invoke(): Flow<Map<ClothesCategoryModel, List<ClothesModel>>> {
+        return repository.getClothesCategoryAndClothes()
     }
 }

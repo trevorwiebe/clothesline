@@ -6,7 +6,7 @@ import java.time.LocalDate
 
 fun OutfitEntity.toOutfitModel(): OutfitModel{
     return OutfitModel(
-        primaryKey = primaryKey,
+        primaryKey = outfitEntityPrimaryKey,
         name = name,
         date = LocalDate.of(dateYear, dateMonth, dateDay)
     )
@@ -14,7 +14,7 @@ fun OutfitEntity.toOutfitModel(): OutfitModel{
 
 fun OutfitModel.toOutfitEntity(): OutfitEntity{
     return OutfitEntity(
-        primaryKey = primaryKey,
+        outfitEntityPrimaryKey = primaryKey,
         name = name,
         dateYear = date.year,
         dateMonth = date.monthValue,

@@ -1,5 +1,6 @@
 package com.trevorwiebe.clothesline.domain.repository
 
+import com.trevorwiebe.clothesline.data.local.entities.ClothesCategoryEntity
 import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 import com.trevorwiebe.clothesline.domain.model.ClothesModel
 import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
@@ -34,4 +35,6 @@ interface ClothesLineRepository {
     fun getClothesTypes(): Flow<List<ClothesCategoryModel>>
 
     fun getClothesTypeById(id: Int): Flow<ClothesCategoryModel>
+
+    fun getClothesCategoryAndClothes(): Flow<Map<ClothesCategoryModel, List<ClothesModel>>>
 }
