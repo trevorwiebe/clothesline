@@ -8,5 +8,7 @@ data class ClothesWornEntity(
     @PrimaryKey(autoGenerate = true)
     val clothesWornPrimaryKey: Int = 0,
     val clothesModelId: Int = 0,
-    val outfitId: Int
+    val dateDay: Int,
+    val dateMonth: Int,
+    val dateYear: Int
 )

@@ -15,6 +15,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 import javax.inject.Inject
 
 @HiltViewModel
@@ -77,7 +78,7 @@ class AddClothesWornViewModel @Inject constructor(
             val clothesWornModel: ClothesWornModel = ClothesWornModel(
                 0,
                 clothesModel.primaryKey,
-                0
+                LocalDate.now()
             )
             addClothesWornUseCases.addClothesWornUC(clothesWornModel)
         }
@@ -88,7 +89,7 @@ class AddClothesWornViewModel @Inject constructor(
             val clothesWornModel: ClothesWornModel = ClothesWornModel(
                 0,
                 clothesModel.primaryKey,
-                0
+                LocalDate.now()
             )
             addClothesWornUseCases.deleteClothesWornUC(clothesWornModel)
         }
