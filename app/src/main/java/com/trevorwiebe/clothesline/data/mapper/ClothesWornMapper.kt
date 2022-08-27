@@ -6,23 +6,16 @@ import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
 
 fun ClothesWornEntity.toClothesWornModel(): ClothesWornModel{
     return ClothesWornModel(
-        primaryKey = clothesWornPrimaryKey,
-        name = name,
-        friendlyId = friendlyId,
-        imageURL = imageURL,
-        // FIXME: I don't think this is right
-        clothesType = ClothesCategoryModel(0, clothesType),
+        clothesWornPrimaryKey = clothesWornPrimaryKey,
+        clothesModelId = clothesModelId,
         outfitModel = outfitId
     )
 }
 
 fun ClothesWornModel.toClothesWornEntity(): ClothesWornEntity {
     return ClothesWornEntity(
-        clothesWornPrimaryKey = primaryKey,
-        name = name,
-        friendlyId = friendlyId,
-        imageURL = imageURL,
-        clothesType = clothesType.name,
+        clothesWornPrimaryKey = clothesWornPrimaryKey,
+        clothesModelId = clothesModelId,
         outfitId = outfitModel
     )
 }

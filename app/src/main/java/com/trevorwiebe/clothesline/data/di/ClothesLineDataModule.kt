@@ -33,8 +33,7 @@ object ClothesLineDataModule {
         return ClothesLineRepositoryImpl(
             clothesCategoryDao = db.clothesModelDao(),
             clothesWornDao = db.clothesWornDao(),
-            clothesDao = db.clothesDao(),
-            outfitDao = db.outfitDao()
+            clothesDao = db.clothesDao()
         )
     }
 }

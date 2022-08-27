@@ -1,11 +1,9 @@
 package com.trevorwiebe.clothesline.data.repository
 
 import android.util.Log
-import androidx.compose.runtime.key
 import com.trevorwiebe.clothesline.data.local.dao.ClothesCategoryDao
 import com.trevorwiebe.clothesline.data.local.dao.ClothesDao
 import com.trevorwiebe.clothesline.data.local.dao.ClothesWornDao
-import com.trevorwiebe.clothesline.data.local.dao.OutfitDao
 import com.trevorwiebe.clothesline.data.local.entities.ClothesCategoryEntity
 import com.trevorwiebe.clothesline.data.local.entities.ClothesEntity
 import com.trevorwiebe.clothesline.data.mapper.*
@@ -20,8 +18,7 @@ import java.time.LocalDate
 class ClothesLineRepositoryImpl(
     private val clothesWornDao: ClothesWornDao,
     private val clothesCategoryDao: ClothesCategoryDao,
-    private val clothesDao: ClothesDao,
-    private val outfitDao: OutfitDao
+    private val clothesDao: ClothesDao
 ): ClothesLineRepository {
 
     // clothes
@@ -57,6 +54,10 @@ class ClothesLineRepositoryImpl(
             .map { entities ->
                 entities.map { it.toClothesWornModel() }
             }
+    }
+
+    override suspend fun deleteClothesWorn(clothesWorn: ClothesWornModel) {
+        clothesWornDao.deleteClothesWorn(clothesWorn.clothesModelId)
     }
 
     // clothes categories

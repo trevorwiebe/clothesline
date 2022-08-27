@@ -25,6 +25,8 @@ interface ClothesLineRepository {
 
     fun getClothesWorn(date: LocalDate): Flow<List<ClothesWornModel>>
 
+    suspend fun deleteClothesWorn(clothesWorn: ClothesWornModel)
+
 
 
     // Clothes Types

@@ -2,6 +2,9 @@ package com.trevorwiebe.clothesline.domain.di
 
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
 import com.trevorwiebe.clothesline.domain.use_cases.ParseCurrencyToLong
+import com.trevorwiebe.clothesline.domain.use_cases.addclothesworn_usecases.AddClothesWornUC
+import com.trevorwiebe.clothesline.domain.use_cases.addclothesworn_usecases.AddClothesWornUseCases
+import com.trevorwiebe.clothesline.domain.use_cases.addclothesworn_usecases.DeleteClothesWornUC
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.*
 import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.*
 import com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.ViewClothesUseCases
@@ -20,6 +23,17 @@ object ClothesLineDomainModule {
     @Provides
     fun provideClothesLine_ParseCurrencyToLong(): ParseCurrencyToLong{
         return ParseCurrencyToLong()
+    }
+
+    @ViewModelScoped
+    @Provides
+    fun provideClothesLine_AddClothesWornUseCases(
+        repository: ClothesLineRepository
+    ): AddClothesWornUseCases {
+        return AddClothesWornUseCases(
+            addClothesWornUC = AddClothesWornUC(repository),
+            deleteClothesWornUC = DeleteClothesWornUC(repository)
+        )
     }
 
     @ViewModelScoped
