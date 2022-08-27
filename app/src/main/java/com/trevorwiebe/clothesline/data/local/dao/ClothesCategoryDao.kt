@@ -17,7 +17,7 @@ interface ClothesCategoryDao {
     @Query("SELECT * FROM clothes_category WHERE clothesCategoryPrimaryKey = :id")
     fun getClothesCategoryByID(id: Int): Flow<ClothesCategoryEntity>
 
-    @Query("SELECT * FROM clothes_category JOIN clothes ON clothes_category.clothesCategoryPrimaryKey = clothes.clothesTypeId")
+    @Query("SELECT * FROM clothes_category LEFT JOIN clothes ON clothes_category.clothesCategoryPrimaryKey = clothes.clothesTypeId")
     fun getClothesCategoryAndClothes(): Flow<Map<ClothesCategoryEntity, List<ClothesEntity>>>
 
     @Insert
