@@ -1,6 +1,6 @@
 package com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn
 
-import com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.uimodel.AddOutfitUiModel
+import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.uimodel.AddOutfitUiModel
 import java.time.LocalDate
 
 data class AddClothesWornState (

@@ -1,4 +1,4 @@
-package com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.uimodel
+package com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.uimodel
 
 import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 import com.trevorwiebe.clothesline.domain.model.ClothesModel
