@@ -14,13 +14,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
+import com.trevorwiebe.clothesline.presentation.ui.screens.addclothes.AddClothesViewModel
+import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.AddClothesWornEvent
+import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.AddClothesWornViewModel
 import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.uimodel.AddOutfitUiModel
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
 @Composable
 fun ClothesTypeList(
     addOutfitUiModel: AddOutfitUiModel,
-    onOpenCategoryClick: () -> Unit
+    onOpenCategoryClick: () -> Unit,
+    viewModel: AddClothesWornViewModel
 ) {
 
     val spacing = LocalSpacing.current
@@ -39,10 +43,14 @@ fun ClothesTypeList(
             fontWeight = FontWeight.Bold
         )
         AnimatedVisibility(visible = addOutfitUiModel.isExpanded) {
-            Log.d("TAG2", "ClothesTypeList: " + addOutfitUiModel.clothesModelList)
             Column() {
-                addOutfitUiModel.clothesModelList.forEach{ clothesModel ->
-                    Text(text = clothesModel.name)
+                addOutfitUiModel.clothesModelList.forEach{ clothesUiModel ->
+                    ClothesList(
+                        clothesUiModel = clothesUiModel,
+                        onCheckedChange = {
+                            viewModel.onEvent(AddClothesWornEvent.OnClothesModelSelected(clothesUiModel))
+                        }
+                    )
                 }
             }
         }

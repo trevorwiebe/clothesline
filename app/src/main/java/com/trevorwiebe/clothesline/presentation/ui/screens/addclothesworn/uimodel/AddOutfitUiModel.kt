@@ -6,5 +6,5 @@ import com.trevorwiebe.clothesline.domain.model.ClothesModel
 data class AddOutfitUiModel (
     val clothesCategoryModel: ClothesCategoryModel,
     val isExpanded: Boolean = true,
-    val clothesModelList: List<ClothesModel>
+    val clothesModelList: List<AddClothesUiModel>
 )

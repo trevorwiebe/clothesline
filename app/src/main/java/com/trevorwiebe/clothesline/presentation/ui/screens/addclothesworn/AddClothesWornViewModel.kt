@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.ManageClothesCategoryUseCases
+import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.uimodel.AddClothesUiModel
 import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.uimodel.AddOutfitUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -34,6 +35,17 @@ class AddClothesWornViewModel @Inject constructor(
                     }
                 )
             }
+            is AddClothesWornEvent.OnClothesModelSelected -> {
+                state = state.copy(
+                    addOutfitUiModelsList = state.addOutfitUiModelsList.map { addOutfitUiModel ->
+                        addOutfitUiModel.copy(clothesModelList = addOutfitUiModel.clothesModelList.map{
+                            if(it.clothesModel.primaryKey == event.addClothesUiModel.clothesModel.primaryKey) {
+                                it.copy(isChecked = !it.isChecked)
+                            }else it
+                        })
+                    }
+                )
+            }
         }
     }
 
@@ -44,7 +56,9 @@ class AddClothesWornViewModel @Inject constructor(
                     addOutfitUiModelsList = it.map { clothesMap ->
                         AddOutfitUiModel(
                             clothesCategoryModel = clothesMap.key,
-                            clothesModelList = clothesMap.value
+                            clothesModelList = clothesMap.value.map { clothesModel ->
+                                AddClothesUiModel(clothesModel, false)
+                            }
                         )
                     }
                 )

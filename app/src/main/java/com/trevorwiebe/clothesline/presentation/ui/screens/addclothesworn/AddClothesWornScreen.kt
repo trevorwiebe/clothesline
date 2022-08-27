@@ -37,7 +37,8 @@ fun AddClothesWornScreen(
                     addOutfitUiModel = clothesUiModel,
                     onOpenCategoryClick = {
                         viewModel.onEvent(AddClothesWornEvent.OnOpenClothesCategory(clothesUiModel))
-                    }
+                    },
+                    viewModel = viewModel
                 )
             }
         }
