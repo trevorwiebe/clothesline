@@ -3,7 +3,7 @@ package com.trevorwiebe.clothesline.presentation.ui.screens.manageclothes.uimode
 import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 import com.trevorwiebe.clothesline.domain.model.ClothesModel
 
-data class ClothesUiModel (
+data class AddOutfitUiModel (
     val clothesCategoryModel: ClothesCategoryModel,
     val isExpanded: Boolean = true,
     val clothesModelList: List<ClothesModel>
