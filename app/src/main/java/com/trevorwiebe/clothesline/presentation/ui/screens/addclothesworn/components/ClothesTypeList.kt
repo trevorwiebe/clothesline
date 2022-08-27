@@ -19,7 +19,8 @@ import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
 @Composable
 fun ClothesTypeList(
-    addOutfitUiModel: AddOutfitUiModel
+    addOutfitUiModel: AddOutfitUiModel,
+    onOpenCategoryClick: () -> Unit
 ) {
 
     val spacing = LocalSpacing.current
@@ -27,7 +28,7 @@ fun ClothesTypeList(
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(spacing.radius_two))
-            .clickable { }
+            .clickable { onOpenCategoryClick() }
             .background(MaterialTheme.colors.primaryVariant)
             .padding(spacing.spaceMedium)
             .fillMaxWidth()

@@ -23,6 +23,20 @@ class AddClothesWornViewModel @Inject constructor(
         loadClothesTypesAndClothes()
     }
 
+    fun onEvent(event: AddClothesWornEvent){
+        when(event){
+            is AddClothesWornEvent.OnOpenClothesCategory -> {
+                state = state.copy(
+                    addOutfitUiModelsList = state.addOutfitUiModelsList.map {
+                        if(it.clothesCategoryModel.primaryKey == event.addOutfitUiModel.clothesCategoryModel.primaryKey){
+                            it.copy(isExpanded = !it.isExpanded)
+                        }else it
+                    }
+                )
+            }
+        }
+    }
+
     private fun loadClothesTypesAndClothes(){
         manageClothesCategoryUseCases.getClothesCategoriesAndClothesUC()
             .map {

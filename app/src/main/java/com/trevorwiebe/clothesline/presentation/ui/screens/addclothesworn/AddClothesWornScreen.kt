@@ -33,7 +33,12 @@ fun AddClothesWornScreen(
                     top = spacing.spaceExtraSmall,
                     bottom = spacing.spaceExtraSmall)
             ){
-                ClothesTypeList(addOutfitUiModel = clothesUiModel)
+                ClothesTypeList(
+                    addOutfitUiModel = clothesUiModel,
+                    onOpenCategoryClick = {
+                        viewModel.onEvent(AddClothesWornEvent.OnOpenClothesCategory(clothesUiModel))
+                    }
+                )
             }
         }
     }
