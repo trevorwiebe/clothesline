@@ -29,7 +29,7 @@ class ManageClothesViewModel @Inject constructor(
 
     init{
         refreshClothesTypes()
-        getClothesByClothesTypeId(state.selectedClothesCategory.primaryKey!!)
+        getClothesByClothesTypeId(state.selectedClothesCategory.primaryKey)
     }
 
     fun onEvent(event: ManageClothesEvent){
@@ -38,7 +38,7 @@ class ManageClothesViewModel @Inject constructor(
                 state = state.copy(
                     selectedClothesCategory = event.clothesCategoryModel
                 )
-                getClothesByClothesTypeId(state.selectedClothesCategory.primaryKey!!)
+                getClothesByClothesTypeId(state.selectedClothesCategory.primaryKey)
             }
             is ManageClothesEvent.OnAddClothesClicked -> {
 
@@ -54,6 +54,7 @@ class ManageClothesViewModel @Inject constructor(
                     clothesCategoryList = clothesCategoryModel,
                     selectedClothesCategory = clothesCategoryModel[0]
                 )
+                getClothesByClothesTypeId(state.selectedClothesCategory.primaryKey)
             }
             .launchIn(viewModelScope)
     }

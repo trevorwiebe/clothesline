@@ -46,11 +46,11 @@ fun ClothesList(
                 .size(80.dp)
                 .clip(RoundedCornerShape(spacing.radius_two))
         )
-        Row(modifier = Modifier
+        Column(modifier = Modifier
             .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Column {
+            Row {
                 Text(
                     text = clothesModel.name,
                     color = MaterialTheme.colors.onSecondary,
@@ -63,18 +63,21 @@ fun ClothesList(
                         .padding(start = spacing.spaceMedium, end = spacing.spaceMedium, top = spacing.spaceSmall, bottom = spacing.spaceSmall)
                 )
             }
-            Column() {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
                 Text(
                     text = clothesModel.friendlyId,
-                    modifier = Modifier.padding(start = spacing.spaceSmall, end = spacing.spaceSmall, bottom = spacing.spaceExtraSmall)
+                    modifier = Modifier.padding(start = spacing.spaceMedium, top = spacing.spaceSmall, bottom = spacing.spaceSmall, end = spacing.spaceSmall)
                 )
                 Text(
                     text = parseLongToCurrency(amount = clothesModel.cost),
-                    modifier = Modifier.padding(start = spacing.spaceSmall, end = spacing.spaceSmall, top = spacing.spaceExtraSmall, bottom = spacing.spaceExtraSmall)
+                    modifier = Modifier.padding(spacing.spaceSmall)
                 )
                 Text(
                     text = parseDate(date = clothesModel.datePurchased),
-                    modifier = Modifier.padding(start = spacing.spaceSmall, end = spacing.spaceSmall, top = spacing.spaceExtraSmall)
+                    modifier = Modifier.padding(start = spacing.spaceSmall, top = spacing.spaceSmall, bottom = spacing.spaceSmall, end = spacing.spaceMedium)
                 )
             }
         }
