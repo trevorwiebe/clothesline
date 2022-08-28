@@ -78,7 +78,8 @@ class AddClothesWornViewModel @Inject constructor(
             val clothesWornModel: ClothesWornModel = ClothesWornModel(
                 0,
                 clothesModel.primaryKey,
-                LocalDate.now()
+                LocalDate.now(),
+                false
             )
             addClothesWornUseCases.addClothesWornUC(clothesWornModel)
         }
@@ -89,7 +90,8 @@ class AddClothesWornViewModel @Inject constructor(
             val clothesWornModel: ClothesWornModel = ClothesWornModel(
                 0,
                 clothesModel.primaryKey,
-                LocalDate.now()
+                LocalDate.now(),
+                false
             )
             addClothesWornUseCases.deleteClothesWornUC(clothesWornModel)
         }

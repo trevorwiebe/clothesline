@@ -14,5 +14,6 @@ data class ClothesEntity (
     val datePurchasedDay: Int,
     val datePurchasedMonth: Int,
     val datePurchasedYear: Int,
-    val cost: Long
+    val cost: Long,
+    val deleted: Int
 )

@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class ClothesCategoryEntity(
     @PrimaryKey(autoGenerate = true)
     val clothesCategoryPrimaryKey: Int = 0,
-    val clothesCategoryName: String
+    val clothesCategoryName: String,
+    val deleted: Int
 )

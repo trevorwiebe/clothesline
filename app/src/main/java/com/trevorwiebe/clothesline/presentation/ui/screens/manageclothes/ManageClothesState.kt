@@ -4,7 +4,7 @@ import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 import com.trevorwiebe.clothesline.domain.model.ClothesModel
 
 data class ManageClothesState(
-    val selectedClothesCategory: ClothesCategoryModel = ClothesCategoryModel(0, "No Clothes Categories"),
+    val selectedClothesCategory: ClothesCategoryModel = ClothesCategoryModel(0, "No Clothes Categories", false),
     val clothesCategoryList: List<ClothesCategoryModel> = emptyList(),
     val clothesList: List<ClothesModel> = emptyList(),
     val clothesWorth: Long = 0

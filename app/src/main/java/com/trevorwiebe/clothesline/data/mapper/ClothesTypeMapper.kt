@@ -6,13 +6,15 @@ import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 fun ClothesCategoryModel.toClothesTypeEntity(): ClothesCategoryEntity {
     return ClothesCategoryEntity(
         clothesCategoryPrimaryKey = primaryKey,
-        clothesCategoryName = name
+        clothesCategoryName = name,
+        deleted = if(deleted) 1 else 0
     )
 }
 
 fun ClothesCategoryEntity.toClothesTypeModel(): ClothesCategoryModel {
     return ClothesCategoryModel(
         primaryKey = clothesCategoryPrimaryKey,
-        name = clothesCategoryName
+        name = clothesCategoryName,
+        deleted = deleted != 1
     )
 }

@@ -15,7 +15,8 @@ fun ClothesModel.toClothesEntity(): ClothesEntity{
         datePurchasedDay = datePurchased.dayOfMonth,
         datePurchasedMonth = datePurchased.monthValue,
         datePurchasedYear = datePurchased.year,
-        cost = cost
+        cost = cost,
+        deleted = if(deleted) 1 else 0
     )
 }
 
@@ -27,6 +28,7 @@ fun ClothesEntity.toClothesModel(): ClothesModel{
         friendlyId = friendlyId,
         imageUrl = imageURL,
         datePurchased = LocalDate.of(datePurchasedYear, datePurchasedMonth, datePurchasedDay),
-        cost = cost
+        cost = cost,
+        deleted = deleted != 1
     )
 }

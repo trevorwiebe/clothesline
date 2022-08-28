@@ -10,5 +10,6 @@ data class ClothesWornEntity(
     val clothesModelId: Int = 0,
     val dateDay: Int,
     val dateMonth: Int,
-    val dateYear: Int
+    val dateYear: Int,
+    val deleted: Int
 )

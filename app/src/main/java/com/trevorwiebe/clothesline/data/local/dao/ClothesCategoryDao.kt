@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ClothesCategoryDao {
 
-    @Query("SELECT * FROM clothes_category")
+    @Query("SELECT * FROM clothes_category WHERE deleted = 0")
     fun getClothesCategory(): Flow<List<ClothesCategoryEntity>>
 
     @Query("SELECT * FROM clothes_category WHERE clothesCategoryPrimaryKey = :id")

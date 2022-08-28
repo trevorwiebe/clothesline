@@ -5,7 +5,7 @@ import java.time.LocalDate
 
 data class AddClothesState (
     val selectedClothesCategoryId: Int = 0,
-    val selectedClothesCategoryModel: ClothesCategoryModel = ClothesCategoryModel(0, ""),
+    val selectedClothesCategoryModel: ClothesCategoryModel = ClothesCategoryModel(0, "", false),
     val clothesCategoryList: List<ClothesCategoryModel> = emptyList(),
     val name: String = "",
     val friendlyId: String = "",

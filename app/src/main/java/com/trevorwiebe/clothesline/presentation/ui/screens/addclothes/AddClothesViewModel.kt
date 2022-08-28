@@ -89,7 +89,7 @@ class AddClothesViewModel @Inject constructor(
     }
 
     private fun saveClothes(clothesTypeId: Int, name: String, friendlyId: String, datePurchased: LocalDate, purchasePrice: Long){
-        val clothesModel = ClothesModel(0, name, clothesTypeId, friendlyId, null, datePurchased, purchasePrice)
+        val clothesModel = ClothesModel(0, name, clothesTypeId, friendlyId, null, datePurchased, purchasePrice, false)
         viewModelScope.launch {
             manageClothesUC.addClothesUC(clothesModel)
         }

@@ -9,5 +9,6 @@ data class ClothesModel(
     val friendlyId: String,
     val imageUrl: String?,
     val datePurchased: LocalDate,
-    val cost: Long
+    val cost: Long,
+    val deleted: Boolean
 )

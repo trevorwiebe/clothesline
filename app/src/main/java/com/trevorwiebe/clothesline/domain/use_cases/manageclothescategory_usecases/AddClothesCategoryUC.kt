@@ -10,7 +10,7 @@ class AddClothesCategoryUC (
         name: String
     ){
         repository.insertClothesType(
-            ClothesCategoryModel(0, name)
+            ClothesCategoryModel(0, name, false)
         )
     }
 }
