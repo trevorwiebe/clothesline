@@ -28,7 +28,7 @@ fun ClothesList(
     Row(modifier = Modifier
         .padding(top = spacing.spaceExtraSmall, bottom = spacing.spaceExtraSmall)
         .border(
-            width = 1.dp,
+            width = 2.dp,
             color = if(clothesUiModel.isChecked) MaterialTheme.colors.secondary
                     else MaterialTheme.colors.primaryVariant,
             shape = RoundedCornerShape(spacing.radius_two)
