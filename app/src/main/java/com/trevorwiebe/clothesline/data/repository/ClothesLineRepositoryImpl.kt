@@ -60,6 +60,10 @@ class ClothesLineRepositoryImpl(
         clothesWornDao.deleteClothesWorn(clothesWorn.clothesModelId)
     }
 
+    override suspend fun insertClothesWornList(clothesWornList: List<ClothesWornModel>) {
+        clothesWornDao.insertClothesWornList(clothesWornList.map { it.toClothesWornEntity() })
+    }
+
     // clothes categories
     override suspend fun insertClothesType(clothesCategoryModel: ClothesCategoryModel) {
         clothesCategoryDao.insertClothesCategory(clothesCategoryModel.toClothesTypeEntity())

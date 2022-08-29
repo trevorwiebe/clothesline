@@ -27,6 +27,8 @@ interface ClothesLineRepository {
 
     suspend fun deleteClothesWorn(clothesWorn: ClothesWornModel)
 
+    suspend fun insertClothesWornList(clothesWornList: List<ClothesWornModel>)
+
 
 
     // Clothes Types

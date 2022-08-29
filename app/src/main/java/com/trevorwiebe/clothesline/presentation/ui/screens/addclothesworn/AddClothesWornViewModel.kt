@@ -1,5 +1,6 @@
 package com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -24,13 +25,15 @@ class AddClothesWornViewModel @Inject constructor(
     private val addClothesWornUseCases: AddClothesWornUseCases
 ): ViewModel() {
 
+    private val TAG = "AddClothesWornViewModel"
+
     var state by mutableStateOf(AddClothesWornState())
 
     init {
         loadClothesTypesAndClothes()
     }
 
-    fun onEvent(event: AddClothesWornEvent){
+    fun onEvent(event: AddClothesWornEvent) {
         when(event){
             is AddClothesWornEvent.OnOpenClothesCategory -> {
                 state = state.copy(
@@ -46,13 +49,29 @@ class AddClothesWornViewModel @Inject constructor(
                     addOutfitUiModelsList = state.addOutfitUiModelsList.map { addOutfitUiModel ->
                         addOutfitUiModel.copy(clothesModelList = addOutfitUiModel.clothesModelList.map{
                             if(it.clothesModel.primaryKey == event.addClothesUiModel.clothesModel.primaryKey) {
-                                if (!it.isChecked) saveClothesWorn(it.clothesModel)
-                                else removeClothesWorn(it.clothesModel)
                                 it.copy(isChecked = !it.isChecked)
                             }else it
                         })
                     }
                 )
+            }
+            is AddClothesWornEvent.OnSaveOutfit -> {
+                val clothesWornList: MutableList<ClothesWornModel> = mutableListOf()
+                state.addOutfitUiModelsList.map { addOutfitUiModel ->
+                    for (clothesModel in addOutfitUiModel.clothesModelList){
+                        Log.d(TAG, "onEvent: " + clothesModel.isChecked)
+                        if(clothesModel.isChecked) {
+                            val clothesWornModel = ClothesWornModel(
+                                0,
+                                clothesModel.clothesModel.primaryKey,
+                                LocalDate.now(),
+                                false
+                            )
+                            clothesWornList.add(clothesWornModel)
+                        }
+                    }
+                }
+                saveClothesWornList(clothesWornList)
             }
         }
     }
@@ -73,15 +92,9 @@ class AddClothesWornViewModel @Inject constructor(
             }.launchIn(viewModelScope)
     }
 
-    private fun saveClothesWorn(clothesModel: ClothesModel){
+    private fun saveClothesWornList(clothesWornModelList: List<ClothesWornModel>){
         viewModelScope.launch {
-            val clothesWornModel: ClothesWornModel = ClothesWornModel(
-                0,
-                clothesModel.primaryKey,
-                LocalDate.now(),
-                false
-            )
-            addClothesWornUseCases.addClothesWornUC(clothesWornModel)
+            addClothesWornUseCases.addClothesWornListUC(clothesWornModelList)
         }
     }
 

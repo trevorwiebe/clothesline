@@ -6,4 +6,5 @@ import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.uimode
 sealed class AddClothesWornEvent {
     data class OnOpenClothesCategory(val addOutfitUiModel: AddOutfitUiModel): AddClothesWornEvent()
     data class OnClothesModelSelected(val addClothesUiModel: AddClothesUiModel): AddClothesWornEvent()
+    object OnSaveOutfit: AddClothesWornEvent()
 }

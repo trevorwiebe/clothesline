@@ -2,6 +2,7 @@ package com.trevorwiebe.clothesline.domain.di
 
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
 import com.trevorwiebe.clothesline.domain.use_cases.ParseCurrencyToLong
+import com.trevorwiebe.clothesline.domain.use_cases.addclothesworn_usecases.AddClothesWornListUC
 import com.trevorwiebe.clothesline.domain.use_cases.addclothesworn_usecases.AddClothesWornUC
 import com.trevorwiebe.clothesline.domain.use_cases.addclothesworn_usecases.AddClothesWornUseCases
 import com.trevorwiebe.clothesline.domain.use_cases.addclothesworn_usecases.DeleteClothesWornUC
@@ -32,7 +33,8 @@ object ClothesLineDomainModule {
     ): AddClothesWornUseCases {
         return AddClothesWornUseCases(
             addClothesWornUC = AddClothesWornUC(repository),
-            deleteClothesWornUC = DeleteClothesWornUC(repository)
+            deleteClothesWornUC = DeleteClothesWornUC(repository),
+            addClothesWornListUC = AddClothesWornListUC(repository)
         )
     }
 
