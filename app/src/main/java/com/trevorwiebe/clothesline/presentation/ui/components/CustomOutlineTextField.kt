@@ -1,7 +1,6 @@
 package com.trevorwiebe.clothesline.presentation.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
@@ -9,7 +8,11 @@ import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
@@ -18,11 +21,13 @@ fun CustomOutlineTextField(
     labelValue: String,
     contentValue: String,
     onValueChange: (String) -> Unit,
+    focusRequester: FocusRequester = remember { FocusRequester() }
 ) {
     val spacing = LocalSpacing.current
     OutlinedTextField(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .focusRequester(focusRequester = focusRequester),
         value = contentValue,
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = MaterialTheme.colors.secondary,
@@ -32,7 +37,8 @@ fun CustomOutlineTextField(
             cursorColor = MaterialTheme.colors.onBackground
         ),
         keyboardOptions = KeyboardOptions.Default.copy(
-            capitalization = KeyboardCapitalization.Sentences
+            capitalization = KeyboardCapitalization.Sentences,
+            imeAction = ImeAction.Next
         ),
         shape = RoundedCornerShape(spacing.radius_two),
         onValueChange = onValueChange,

@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.trevorwiebe.clothesline.presentation.ui.components.ActionButton
 import com.trevorwiebe.clothesline.presentation.ui.components.CustomOutlineTextField
@@ -24,11 +26,12 @@ fun AddClothesScreen(
 ) {
 
     val spacing = LocalSpacing.current
-    var state = viewModel.state
+    val state = viewModel.state
+    val focusReq = remember { FocusRequester() }
 
-    state = state.copy(
-        selectedClothesCategoryId = clothesId
-    )
+    LaunchedEffect(key1 = Unit){
+        focusReq.requestFocus()
+    }
 
     Column(modifier = Modifier.padding(spacing.spaceMedium)) {
         ClothesCategorySelector(
@@ -37,7 +40,8 @@ fun AddClothesScreen(
         CustomOutlineTextField(
             labelValue = "Name",
             contentValue = state.name,
-            onValueChange = {viewModel.onEvent(AddClothesEvent.OnNameChanged(it))}
+            onValueChange = {viewModel.onEvent(AddClothesEvent.OnNameChanged(it))},
+            focusRequester = focusReq
         )
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
         CustomOutlineTextField(
@@ -55,13 +59,16 @@ fun AddClothesScreen(
         CustomOutlineCurrencyTextField(
             labelValue = "Purchase price",
             contentValue = parseLongToCurrency(amount = state.purchasedPrice),
-            onValueChange = {viewModel.onEvent(AddClothesEvent.OnPurchasePriceChanged(it))}
+            onValueChange = {viewModel.onEvent(AddClothesEvent.OnPurchasePriceChanged(it))},
         )
         Spacer(modifier = Modifier.height(spacing.spaceMedium))
         ActionButton(
             text = "Save ${viewModel.state.selectedClothesCategoryModel.name}",
-            onClick = { viewModel.onEvent(AddClothesEvent.OnClothesSaved) })
-
+            onClick = {
+                viewModel.onEvent(AddClothesEvent.OnClothesSaved)
+                focusReq.requestFocus()
+            }
+        )
     }
 
 }
