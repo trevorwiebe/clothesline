@@ -67,7 +67,7 @@ fun ClothesCategorySelector(
                         .fillMaxWidth()
                         .padding(
                             top = spacing.spaceSmall,
-                            bottom = spacing.spaceSmall,
+                            bottom = spacing.spaceMedium,
                             start = spacing.spaceMedium,
                             end = spacing.spaceSmall
                         )
