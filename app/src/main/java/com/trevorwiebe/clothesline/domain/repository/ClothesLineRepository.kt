@@ -47,4 +47,6 @@ interface ClothesLineRepository {
     suspend fun insertOutfit(outfitModel: OutfitModel)
 
     fun getOutfitById(id: Int): Flow<OutfitModel>
+
+    fun getOutfitsByDate(date: LocalDate): Flow<List<OutfitModel>>
 }

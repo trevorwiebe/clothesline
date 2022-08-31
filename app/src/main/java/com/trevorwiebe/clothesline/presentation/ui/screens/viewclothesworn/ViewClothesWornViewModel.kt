@@ -6,23 +6,26 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.ManageClothesWornUseCases
+import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.OutfitUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
+import java.time.LocalDate
 import javax.inject.Inject
 
 @HiltViewModel
 class ViewClothesWornViewModel @Inject constructor(
-    private val manageClothesWornUseCases: ManageClothesWornUseCases
+    private val outfitUseCases: OutfitUseCases
 ): ViewModel() {
 
     var state by mutableStateOf(ViewClothesState())
 
-    private var getClothesWornJob: Job? = null
+    private var loadOutfitsJob: Job? = null
 
     init {
-        loadClothesWorn()
+        loadOutfitsByDate(state.date)
     }
 
     fun onEvent(event: ViewClothesWornEvent){
@@ -31,7 +34,7 @@ class ViewClothesWornViewModel @Inject constructor(
                 state = state.copy(
                     date = state.date.plusDays(1)
                 )
-                loadClothesWorn()
+                loadOutfitsByDate(state.date)
             }
             is ViewClothesWornEvent.OnDateSelected -> {
 
@@ -40,20 +43,21 @@ class ViewClothesWornViewModel @Inject constructor(
                 state = state.copy(
                     date = state.date.minusDays(1)
                 )
-                loadClothesWorn()
+                loadOutfitsByDate(state.date)
             }
         }
     }
 
-    private fun loadClothesWorn(){
-        getClothesWornJob?.cancel()
-        getClothesWornJob = manageClothesWornUseCases
-            .getClothesWorn(state.date)
-            .onEach {
+    private fun loadOutfitsByDate(date: LocalDate){
+        loadOutfitsJob?.cancel()
+        loadOutfitsJob = outfitUseCases
+            .getOutfitsByDateUC(date)
+            .map {
                 state = state.copy(
-                    clothesWornList = it
+                    outfitList = it
                 )
             }
             .launchIn(viewModelScope)
     }
+
 }

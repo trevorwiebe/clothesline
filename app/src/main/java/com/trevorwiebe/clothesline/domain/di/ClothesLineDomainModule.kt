@@ -9,6 +9,9 @@ import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.D
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.*
 import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.*
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.GetClothesWorn
+import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.GetOutfitByIdUC
+import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.GetOutfitsByDateUC
+import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.OutfitUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -62,6 +65,17 @@ object ClothesLineDomainModule {
             deleteClothesCategoryUC = DeleteClothesCategoryUC(repository),
             getClothesCategoryByIdUC = GetClothesCategoryByIdUC(repository),
             getClothesCategoriesAndClothesUC = GetClothesCategoriesAndClothesUC(repository)
+        )
+    }
+
+    @ViewModelScoped
+    @Provides
+    fun provideClothesLine_OutfitUseCases(
+        repository: ClothesLineRepository
+    ): OutfitUseCases {
+        return OutfitUseCases(
+            getOutfitByIdUC = GetOutfitByIdUC(repository),
+            getOutfitsByDateUC = GetOutfitsByDateUC(repository)
         )
     }
 
