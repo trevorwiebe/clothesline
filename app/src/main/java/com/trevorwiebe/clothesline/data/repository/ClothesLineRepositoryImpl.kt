@@ -4,12 +4,14 @@ import android.util.Log
 import com.trevorwiebe.clothesline.data.local.dao.ClothesCategoryDao
 import com.trevorwiebe.clothesline.data.local.dao.ClothesDao
 import com.trevorwiebe.clothesline.data.local.dao.ClothesWornDao
+import com.trevorwiebe.clothesline.data.local.dao.OutfitDao
 import com.trevorwiebe.clothesline.data.local.entities.ClothesCategoryEntity
 import com.trevorwiebe.clothesline.data.local.entities.ClothesEntity
 import com.trevorwiebe.clothesline.data.mapper.*
 import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 import com.trevorwiebe.clothesline.domain.model.ClothesModel
 import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
+import com.trevorwiebe.clothesline.domain.model.OutfitModel
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -18,7 +20,8 @@ import java.time.LocalDate
 class ClothesLineRepositoryImpl(
     private val clothesWornDao: ClothesWornDao,
     private val clothesCategoryDao: ClothesCategoryDao,
-    private val clothesDao: ClothesDao
+    private val clothesDao: ClothesDao,
+    private val outfitDao: OutfitDao
 ): ClothesLineRepository {
 
     // clothes
@@ -89,7 +92,6 @@ class ClothesLineRepositoryImpl(
         val clothesMap: Flow<Map<ClothesCategoryEntity, List<ClothesEntity>>> = clothesCategoryDao.getClothesCategoryAndClothes()
         return clothesMap.map { map1 ->
                 map1.mapKeys { clothesTM ->
-                    Log.d("TAG", "getClothesCategoryAndClothes: " + clothesTM.key)
                     clothesTM.key.toClothesTypeModel()
                 }
             }
@@ -99,5 +101,14 @@ class ClothesLineRepositoryImpl(
                     clothesM.toClothesModel() }
                 }
             }
+    }
+
+    // outfit
+    override suspend fun insertOutfit(outfitModel: OutfitModel) {
+        outfitDao.insertDao(outfitModel.toOutfitEntity())
+    }
+
+    override fun getOutfitById(id: Int): Flow<OutfitModel> {
+        return outfitDao.getOutfitById(id).map { it.toOutfitModel() }
     }
 }
