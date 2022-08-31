@@ -2,14 +2,13 @@ package com.trevorwiebe.clothesline.domain.di
 
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
 import com.trevorwiebe.clothesline.domain.use_cases.ParseCurrencyToLong
-import com.trevorwiebe.clothesline.domain.use_cases.addclothesworn_usecases.AddClothesWornListUC
-import com.trevorwiebe.clothesline.domain.use_cases.addclothesworn_usecases.AddClothesWornUC
-import com.trevorwiebe.clothesline.domain.use_cases.addclothesworn_usecases.AddClothesWornUseCases
-import com.trevorwiebe.clothesline.domain.use_cases.addclothesworn_usecases.DeleteClothesWornUC
+import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.AddClothesWornListUC
+import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.AddClothesWornUC
+import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.ManageClothesWornUseCases
+import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.DeleteClothesWornUC
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.*
 import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.*
-import com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.ViewClothesUseCases
-import com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.GetClothesWorn
+import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.GetClothesWorn
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,11 +29,12 @@ object ClothesLineDomainModule {
     @Provides
     fun provideClothesLine_AddClothesWornUseCases(
         repository: ClothesLineRepository
-    ): AddClothesWornUseCases {
-        return AddClothesWornUseCases(
+    ): ManageClothesWornUseCases {
+        return ManageClothesWornUseCases(
             addClothesWornUC = AddClothesWornUC(repository),
             deleteClothesWornUC = DeleteClothesWornUC(repository),
-            addClothesWornListUC = AddClothesWornListUC(repository)
+            addClothesWornListUC = AddClothesWornListUC(repository),
+            getClothesWorn = GetClothesWorn(repository)
         )
     }
 
@@ -65,13 +65,4 @@ object ClothesLineDomainModule {
         )
     }
 
-    @ViewModelScoped
-    @Provides
-    fun provideClothesLine_ViewClothesUseCases(
-        repository: ClothesLineRepository
-    ): ViewClothesUseCases{
-        return ViewClothesUseCases(
-            getClothesWorn = GetClothesWorn(repository)
-        )
-    }
 }

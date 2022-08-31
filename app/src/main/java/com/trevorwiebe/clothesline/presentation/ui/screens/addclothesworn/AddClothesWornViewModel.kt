@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.trevorwiebe.clothesline.domain.model.ClothesModel
 import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
-import com.trevorwiebe.clothesline.domain.use_cases.addclothesworn_usecases.AddClothesWornUseCases
+import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.ManageClothesWornUseCases
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.ManageClothesCategoryUseCases
 import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.uimodel.AddClothesUiModel
 import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.uimodel.AddOutfitUiModel
@@ -22,7 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddClothesWornViewModel @Inject constructor(
     private val manageClothesCategoryUseCases: ManageClothesCategoryUseCases,
-    private val addClothesWornUseCases: AddClothesWornUseCases
+    private val manageClothesWornUseCases: ManageClothesWornUseCases
 ): ViewModel() {
 
     private val TAG = "AddClothesWornViewModel"
@@ -94,19 +94,19 @@ class AddClothesWornViewModel @Inject constructor(
 
     private fun saveClothesWornList(clothesWornModelList: List<ClothesWornModel>){
         viewModelScope.launch {
-            addClothesWornUseCases.addClothesWornListUC(clothesWornModelList)
+            manageClothesWornUseCases.addClothesWornListUC(clothesWornModelList)
         }
     }
 
     private fun removeClothesWorn(clothesModel: ClothesModel){
         viewModelScope.launch {
-            val clothesWornModel: ClothesWornModel = ClothesWornModel(
+            val clothesWornModel = ClothesWornModel(
                 0,
                 clothesModel.primaryKey,
                 LocalDate.now(),
                 false
             )
-            addClothesWornUseCases.deleteClothesWornUC(clothesWornModel)
+            manageClothesWornUseCases.deleteClothesWornUC(clothesWornModel)
         }
     }
 }

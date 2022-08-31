@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.trevorwiebe.clothesline.domain.use_cases.viewclotheswornusecases.ViewClothesUseCases
+import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.ManageClothesWornUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ViewClothesWornViewModel @Inject constructor(
-    private val viewClothesUseCases: ViewClothesUseCases
+    private val manageClothesWornUseCases: ManageClothesWornUseCases
 ): ViewModel() {
 
     var state by mutableStateOf(ViewClothesState())
@@ -47,7 +47,7 @@ class ViewClothesWornViewModel @Inject constructor(
 
     private fun loadClothesWorn(){
         getClothesWornJob?.cancel()
-        getClothesWornJob = viewClothesUseCases
+        getClothesWornJob = manageClothesWornUseCases
             .getClothesWorn(state.date)
             .onEach {
                 state = state.copy(
