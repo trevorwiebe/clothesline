@@ -34,7 +34,7 @@ fun ClothesTypeList(
         modifier = Modifier
             .clip(RoundedCornerShape(spacing.radius_two))
             .clickable { onOpenCategoryClick() }
-            .background(MaterialTheme.colors.primaryVariant)
+            .background(MaterialTheme.colors.surface)
             .padding(spacing.spaceMedium)
             .fillMaxWidth()
     ) {

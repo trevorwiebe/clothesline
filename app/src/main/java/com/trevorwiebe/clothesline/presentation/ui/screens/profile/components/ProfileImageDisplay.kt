@@ -35,7 +35,7 @@ fun ProfileImageDisplay(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colors.primaryVariant),
+                .background(MaterialTheme.colors.surface),
             horizontalAlignment = CenterHorizontally
         ) {
             Image(
@@ -55,7 +55,7 @@ fun ProfileImageDisplay(
             )
             Text(
                 text = "Trevor Wiebe",
-                color = MaterialTheme.colors.onBackground,
+                color = MaterialTheme.colors.onSurface,
                 modifier = Modifier
                     .padding(start = spacing.spaceMedium, end = spacing.spaceMedium)
                     .align(CenterHorizontally),
@@ -64,7 +64,7 @@ fun ProfileImageDisplay(
             )
             Text(
                 text = "thisistrevor4@gmail.com",
-                color = MaterialTheme.colors.onBackground,
+                color = MaterialTheme.colors.onSurface,
                 modifier = Modifier
                     .padding(top=spacing.spaceSmall, start = spacing.spaceMedium, end = spacing.spaceMedium, bottom = spacing.spaceMedium)
                     .align(CenterHorizontally),

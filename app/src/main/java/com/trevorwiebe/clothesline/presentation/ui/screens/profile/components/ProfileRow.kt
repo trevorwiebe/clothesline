@@ -42,7 +42,7 @@ fun ProfileRow(
             .clip(RoundedCornerShape(spacing.radius_two))
             .fillMaxWidth()
             .clickable { onClick() }
-            .background(MaterialTheme.colors.primaryVariant)
+            .background(MaterialTheme.colors.surface)
             .padding(spacing.spaceMedium),
     ) {
         Icon(
@@ -51,7 +51,7 @@ fun ProfileRow(
                 .background(color)
                 .padding(spacing.spaceSmall),
             imageVector = icon,
-            tint = MaterialTheme.colors.onSecondary,
+            tint = MaterialTheme.colors.onPrimary,
             contentDescription = rowContentDescription
         )
         Row(
@@ -65,7 +65,7 @@ fun ProfileRow(
                     .padding(start = spacing.spaceMedium, end = spacing.spaceMedium),
                 text = name,
                 fontSize = 16.sp,
-                color = MaterialTheme.colors.onBackground
+                color = MaterialTheme.colors.onSurface
             )
             if(more){
                 Icon(

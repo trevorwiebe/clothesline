@@ -30,7 +30,7 @@ fun CustomFloatingActionButton(
     Row(
         modifier = Modifier
             .clip(RoundedCornerShape(spacing.radius_two))
-            .background(MaterialTheme.colors.secondaryVariant)
+            .background(MaterialTheme.colors.secondary)
             .clickable { onClick() }
             .padding(spacing.spaceMedium),
         verticalAlignment = Alignment.CenterVertically,

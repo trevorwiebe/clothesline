@@ -53,13 +53,13 @@ fun ClothesList(
             Row {
                 Text(
                     text = clothesModel.name,
-                    color = MaterialTheme.colors.onSecondary,
+                    color = MaterialTheme.colors.onPrimary,
                     fontSize = 20.sp,
                     fontWeight = Bold,
                     modifier = Modifier
                         .padding(start = spacing.spaceMedium, end = spacing.spaceMedium)
                         .clip(RoundedCornerShape(spacing.radius_two))
-                        .background(MaterialTheme.colors.secondary)
+                        .background(MaterialTheme.colors.primary)
                         .padding(start = spacing.spaceMedium, end = spacing.spaceMedium, top = spacing.spaceSmall, bottom = spacing.spaceSmall)
                 )
             }

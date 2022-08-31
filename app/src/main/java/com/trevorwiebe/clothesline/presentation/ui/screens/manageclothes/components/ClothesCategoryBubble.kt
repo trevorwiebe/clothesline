@@ -26,14 +26,14 @@ fun ClothesCategoryBubble(
         modifier = Modifier
             .clip(RoundedCornerShape(spacing.radius_two))
             .background(
-                if(isSelected) MaterialTheme.colors.secondary
-                else MaterialTheme.colors.primaryVariant
+                if(isSelected) MaterialTheme.colors.primary
+                else MaterialTheme.colors.surface
             )
             .clickable { onClick() }
             .padding(spacing.spaceMedium),
         color =
-            if (isSelected) MaterialTheme.colors.onSecondary
-            else MaterialTheme.colors.onBackground
+            if (isSelected) MaterialTheme.colors.onPrimary
+            else MaterialTheme.colors.onSurface
     )
 
 }

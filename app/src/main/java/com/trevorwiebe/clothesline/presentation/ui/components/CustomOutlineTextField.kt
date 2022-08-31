@@ -30,9 +30,9 @@ fun CustomOutlineTextField(
             .focusRequester(focusRequester = focusRequester),
         value = contentValue,
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = MaterialTheme.colors.secondary,
+            focusedBorderColor = MaterialTheme.colors.primary,
             unfocusedBorderColor = MaterialTheme.colors.onBackground,
-            focusedLabelColor = MaterialTheme.colors.secondary,
+            focusedLabelColor = MaterialTheme.colors.primary,
             unfocusedLabelColor = MaterialTheme.colors.onBackground,
             cursorColor = MaterialTheme.colors.onBackground
         ),

@@ -32,7 +32,7 @@ fun ClothesCategorySelector(
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(spacing.radius_two))
-            .background(if (viewModel.state.isClothesCategoryOpen) MaterialTheme.colors.primaryVariant else MaterialTheme.colors.background)
+            .background(if (viewModel.state.isClothesCategoryOpen) MaterialTheme.colors.surface else MaterialTheme.colors.background)
             .fillMaxWidth()
     ) {
         Row(
@@ -41,7 +41,7 @@ fun ClothesCategorySelector(
                 .clickable { onOpen() }
                 .border(
                     width = 1.dp,
-                    color = if (viewModel.state.isClothesCategoryOpen) MaterialTheme.colors.primaryVariant else MaterialTheme.colors.onBackground,
+                    color = if (viewModel.state.isClothesCategoryOpen) MaterialTheme.colors.surface else MaterialTheme.colors.onBackground,
                     shape = RoundedCornerShape(spacing.radius_two)
                 )
                 .padding(spacing.spaceMedium),

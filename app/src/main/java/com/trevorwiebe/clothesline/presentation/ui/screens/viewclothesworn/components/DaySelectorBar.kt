@@ -38,7 +38,7 @@ fun DaySelectorBar(
             modifier = Modifier
                 .clip(RoundedCornerShape(spacing.radius_two))
                 .clickable { viewModel.onEvent(ViewClothesWornEvent.OnPreviousDayClick) }
-                .background(MaterialTheme.colors.primaryVariant)
+                .background(MaterialTheme.colors.surface)
                 .padding(spacing.spaceMedium),
             imageVector = Icons.Default.ArrowBack,
             contentDescription = "Back"
@@ -47,7 +47,7 @@ fun DaySelectorBar(
             modifier = Modifier
                 .clip(RoundedCornerShape(spacing.radius_two))
                 .clickable {  }
-                .background(MaterialTheme.colors.primaryVariant)
+                .background(MaterialTheme.colors.surface)
                 .padding(spacing.spaceMedium),
             text = parseDate(date = viewModel.state.date)
         )
@@ -55,7 +55,7 @@ fun DaySelectorBar(
             modifier = Modifier
                 .clip(RoundedCornerShape(spacing.radius_two))
                 .clickable { viewModel.onEvent(ViewClothesWornEvent.OnNextDayClick) }
-                .background(MaterialTheme.colors.primaryVariant)
+                .background(MaterialTheme.colors.surface)
                 .padding(spacing.spaceMedium),
             imageVector = Icons.Default.ArrowForward,
             contentDescription = "Forward"

@@ -27,7 +27,7 @@ fun ClothesWorthPane(
             modifier = Modifier
                 .padding(top = spacing.spaceSmall, bottom = spacing.spaceSmall),
             text = totalAmount,
-            color = MaterialTheme.colors.secondary,
+            color = MaterialTheme.colors.primary,
             fontWeight = FontWeight.Bold,
             fontSize = 30.sp
         )

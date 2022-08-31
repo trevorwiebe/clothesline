@@ -29,8 +29,8 @@ fun ClothesList(
         .padding(top = spacing.spaceExtraSmall, bottom = spacing.spaceExtraSmall)
         .border(
             width = 2.dp,
-            color = if(clothesUiModel.isChecked) MaterialTheme.colors.secondary
-                    else MaterialTheme.colors.primaryVariant,
+            color = if(clothesUiModel.isChecked) MaterialTheme.colors.primary
+                    else MaterialTheme.colors.surface,
             shape = RoundedCornerShape(spacing.radius_two)
         )
         .fillMaxWidth()
@@ -55,8 +55,8 @@ fun ClothesList(
             modifier = Modifier.padding(start = spacing.spaceSmall, end = spacing.spaceSmall),
             text = clothesUiModel.clothesModel.name,
             fontWeight = if (clothesUiModel.isChecked) FontWeight.Bold else FontWeight.Normal,
-            color = if(clothesUiModel.isChecked) MaterialTheme.colors.secondary
-                    else MaterialTheme.colors.onBackground
+            color = if(clothesUiModel.isChecked) MaterialTheme.colors.primary
+                    else MaterialTheme.colors.onSurface
         )
     }
 }

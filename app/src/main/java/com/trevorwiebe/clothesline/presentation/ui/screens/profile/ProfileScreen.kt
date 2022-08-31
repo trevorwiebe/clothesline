@@ -33,7 +33,7 @@ fun ProfileScreen(navController: NavHostController) {
         ProfileRow(
             name = "Add Clothes",
             icon = Icons.Default.Add,
-            color = MaterialTheme.colors.secondary,
+            color = MaterialTheme.colors.primary,
             rowContentDescription = "Add Clothes",
             more = true,
             onClick = {navController.navigate(Route.MANAGE_CLOTHES)}
@@ -42,7 +42,7 @@ fun ProfileScreen(navController: NavHostController) {
         ProfileRow(
             name = "Add Clothes Types",
             icon = Icons.Default.Add,
-            color = MaterialTheme.colors.secondary,
+            color = MaterialTheme.colors.primary,
             rowContentDescription = "Add Clothes Types",
             more = true,
             onClick = {navController.navigate(Route.MANAGE_CLOTHES_TYPE)}
@@ -51,7 +51,7 @@ fun ProfileScreen(navController: NavHostController) {
         ProfileRow(
             name = "Settings",
             icon = Icons.Default.Settings,
-            color = MaterialTheme.colors.secondary,
+            color = MaterialTheme.colors.primary,
             rowContentDescription = "Settings",
             more = true,
             onClick = {navController.navigate(Route.SETTINGS)}
@@ -60,7 +60,7 @@ fun ProfileScreen(navController: NavHostController) {
         ProfileRow(
             name = "Sign Out",
             icon = Icons.Default.AccountBox,
-            color = MaterialTheme.colors.secondary,
+            color = MaterialTheme.colors.primary,
             rowContentDescription = "Sign Out",
             more = false,
             onClick = {}

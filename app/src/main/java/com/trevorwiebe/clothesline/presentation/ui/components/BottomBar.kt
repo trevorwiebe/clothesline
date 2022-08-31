@@ -36,7 +36,8 @@ fun BottomBar(
                 .clip(RoundedCornerShape(
                     topStart = spacing.radius_two,
                     topEnd = spacing.radius_two)
-                )
+                ),
+            backgroundColor = MaterialTheme.colors.surface
         ) {
             bottomNavItems.forEach{ screen ->
                 AddItem(
@@ -58,7 +59,7 @@ fun RowScope.AddItem(
     BottomNavigationItem(
         icon = { Icon(screen.icon, contentDescription = null) },
         selectedContentColor = MaterialTheme.colors.secondary,
-        unselectedContentColor = MaterialTheme.colors.onBackground,
+        unselectedContentColor = MaterialTheme.colors.onSurface,
         label = { Text(stringResource(id = screen.res)) },
         selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
         onClick = {

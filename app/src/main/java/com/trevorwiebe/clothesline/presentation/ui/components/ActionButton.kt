@@ -18,7 +18,7 @@ fun ActionButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    color: Color = MaterialTheme.colors.secondary
+    color: Color = MaterialTheme.colors.primary
 ) {
     val spacing = LocalSpacing.current
     Row(
@@ -34,7 +34,7 @@ fun ActionButton(
         Text(
             text = allTextToCaps(text = text),
             style = MaterialTheme.typography.button,
-            color = MaterialTheme.colors.onSecondary
+            color = MaterialTheme.colors.onPrimary
         )
     }
 

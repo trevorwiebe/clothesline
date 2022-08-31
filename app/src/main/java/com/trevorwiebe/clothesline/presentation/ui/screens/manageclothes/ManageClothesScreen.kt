@@ -62,7 +62,7 @@ fun ManageClothesScreen(
                         Spacer(modifier = Modifier.height(spacing.spaceSmall))
                     }
                     items(viewModel.state.clothesList){ clothesModel ->
-                        Divider(color = MaterialTheme.colors.primaryVariant, thickness = 1.dp)
+                        Divider(color = MaterialTheme.colors.surface, thickness = 1.dp)
                         ClothesList(clothesModel = clothesModel)
                     }
                 }

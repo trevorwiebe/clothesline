@@ -38,20 +38,20 @@ fun ClothesTypeList(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colors.primaryVariant),
+                .background(MaterialTheme.colors.surface),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = clothesCategoryModel.name,
-                color = MaterialTheme.colors.onBackground,
+                color = MaterialTheme.colors.onSurface,
                 modifier = Modifier
                     .padding(start = spacing.spaceMedium, end = spacing.spaceMedium),
             )
             Icon(
                 imageVector = Icons.Default.Delete,
                 contentDescription = "Delete",
-                tint = MaterialTheme.colors.secondary,
+                tint = MaterialTheme.colors.primary,
                 modifier = Modifier
                     .clip(RoundedCornerShape(spacing.radius_two))
                     .clickable { onDeleteClicked() }
