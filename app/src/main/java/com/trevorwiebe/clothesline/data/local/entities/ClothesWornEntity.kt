@@ -7,9 +7,10 @@ import androidx.room.PrimaryKey
 data class ClothesWornEntity(
     @PrimaryKey(autoGenerate = true)
     val clothesWornPrimaryKey: Int = 0,
-    val clothesModelId: Int = 0,
-    val dateDay: Int,
-    val dateMonth: Int,
-    val dateYear: Int,
-    val deleted: Int
+    val clothesWornClothesModelId: Int,
+    val clothesWornOutfitId: Int,
+    val clothesWornDateDay: Int,
+    val clothesWornDateMonth: Int,
+    val clothesWornDateYear: Int,
+    val clothesWornDeleted: Int
 )

@@ -64,6 +64,7 @@ class AddClothesWornViewModel @Inject constructor(
                             val clothesWornModel = ClothesWornModel(
                                 0,
                                 clothesModel.clothesModel.primaryKey,
+                                0,
                                 LocalDate.now(),
                                 false
                             )
@@ -98,15 +99,4 @@ class AddClothesWornViewModel @Inject constructor(
         }
     }
 
-    private fun removeClothesWorn(clothesModel: ClothesModel){
-        viewModelScope.launch {
-            val clothesWornModel = ClothesWornModel(
-                0,
-                clothesModel.primaryKey,
-                LocalDate.now(),
-                false
-            )
-            manageClothesWornUseCases.deleteClothesWornUC(clothesWornModel)
-        }
-    }
 }

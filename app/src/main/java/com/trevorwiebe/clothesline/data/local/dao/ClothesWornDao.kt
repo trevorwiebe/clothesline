@@ -16,6 +16,6 @@ interface ClothesWornDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertClothesWornList(clothesWornEntityList: List<ClothesWornEntity>)
 
-    @Query("DELETE FROM clothes_worn WHERE clothes_worn.clothesModelId = :clothesModelId")
+    @Query("DELETE FROM clothes_worn WHERE clothes_worn.clothesWornClothesModelId = :clothesModelId")
     suspend fun deleteClothesWorn(clothesModelId: Int)
 }
