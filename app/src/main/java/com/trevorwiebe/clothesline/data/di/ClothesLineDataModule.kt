@@ -31,7 +31,7 @@ object ClothesLineDataModule {
         db: ClothesLineDatabase
     ): ClothesLineRepository {
         return ClothesLineRepositoryImpl(
-            clothesCategoryDao = db.clothesModelDao(),
+            clothesCategoryDao = db.clothesCategoryDao(),
             clothesWornDao = db.clothesWornDao(),
             clothesDao = db.clothesDao(),
             outfitDao = db.outfitDao()

@@ -22,8 +22,7 @@ abstract class ClothesLineDatabase : RoomDatabase() {
 
     abstract fun clothesWornDao(): ClothesWornDao
     abstract fun clothesDao(): ClothesDao
-    // TODO rename this appropriately
-    abstract fun clothesModelDao(): ClothesCategoryDao
+    abstract fun clothesCategoryDao(): ClothesCategoryDao
     abstract fun outfitDao(): OutfitDao
 
 }
