@@ -1,6 +1,5 @@
 package com.trevorwiebe.clothesline.domain.repository
 
-import com.trevorwiebe.clothesline.data.local.entities.OutfitWithClothesWornEntity
 import com.trevorwiebe.clothesline.domain.model.*
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
@@ -43,7 +42,7 @@ interface ClothesLineRepository {
 
 
     // Outfit
-    suspend fun insertOutfit(outfitModel: OutfitModel)
+    suspend fun insertOutfitAndClothesWorn(outfitModel: OutfitModel, clothesWornList: List<ClothesWornModel>)
 
     fun getOutfitById(id: Int): Flow<OutfitModel>
 

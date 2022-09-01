@@ -1,15 +1,14 @@
 package com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.trevorwiebe.clothesline.domain.model.ClothesModel
 import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
-import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.ManageClothesWornUseCases
+import com.trevorwiebe.clothesline.domain.model.OutfitModel
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.ManageClothesCategoryUseCases
+import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.OutfitUseCases
 import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.uimodel.AddClothesUiModel
 import com.trevorwiebe.clothesline.presentation.ui.screens.addclothesworn.uimodel.AddOutfitUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,7 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddClothesWornViewModel @Inject constructor(
     private val manageClothesCategoryUseCases: ManageClothesCategoryUseCases,
-    private val manageClothesWornUseCases: ManageClothesWornUseCases
+    private val outfitUseCases: OutfitUseCases
 ): ViewModel() {
 
     private val TAG = "AddClothesWornViewModel"
@@ -56,15 +55,15 @@ class AddClothesWornViewModel @Inject constructor(
                 )
             }
             is AddClothesWornEvent.OnSaveOutfit -> {
+                val outfit = OutfitModel(0, LocalDate.now(), false)
                 val clothesWornList: MutableList<ClothesWornModel> = mutableListOf()
                 state.addOutfitUiModelsList.map { addOutfitUiModel ->
                     for (clothesModel in addOutfitUiModel.clothesModelList){
-                        Log.d(TAG, "onEvent: " + clothesModel.isChecked)
                         if(clothesModel.isChecked) {
                             val clothesWornModel = ClothesWornModel(
                                 0,
                                 clothesModel.clothesModel.primaryKey,
-                                0,
+                                74,
                                 LocalDate.now(),
                                 false
                             )
@@ -72,7 +71,7 @@ class AddClothesWornViewModel @Inject constructor(
                         }
                     }
                 }
-                saveClothesWornList(clothesWornList)
+                saveOutfitAndClothesWornList(outfit, clothesWornList)
             }
         }
     }
@@ -93,10 +92,9 @@ class AddClothesWornViewModel @Inject constructor(
             }.launchIn(viewModelScope)
     }
 
-    private fun saveClothesWornList(clothesWornModelList: List<ClothesWornModel>){
+    private fun saveOutfitAndClothesWornList(outfitModel: OutfitModel, clothesWornModelList: List<ClothesWornModel>){
         viewModelScope.launch {
-            manageClothesWornUseCases.addClothesWornListUC(clothesWornModelList)
+            outfitUseCases.insertOutfitAndClothesWornListUC(outfitModel, clothesWornModelList)
         }
     }
-
 }

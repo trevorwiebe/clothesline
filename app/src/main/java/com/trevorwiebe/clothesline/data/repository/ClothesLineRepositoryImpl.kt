@@ -6,7 +6,6 @@ import com.trevorwiebe.clothesline.data.local.dao.ClothesWornDao
 import com.trevorwiebe.clothesline.data.local.dao.OutfitDao
 import com.trevorwiebe.clothesline.data.local.entities.ClothesCategoryEntity
 import com.trevorwiebe.clothesline.data.local.entities.ClothesEntity
-import com.trevorwiebe.clothesline.data.local.entities.OutfitWithClothesWornEntity
 import com.trevorwiebe.clothesline.data.mapper.*
 import com.trevorwiebe.clothesline.domain.model.*
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
@@ -101,8 +100,14 @@ class ClothesLineRepositoryImpl(
     }
 
     // outfit
-    override suspend fun insertOutfit(outfitModel: OutfitModel) {
-        outfitDao.insertDao(outfitModel.toOutfitEntity())
+    override suspend fun insertOutfitAndClothesWorn(
+        outfitModel: OutfitModel,
+        clothesWornList: List<ClothesWornModel>
+    ) {
+        outfitDao.insertOutfitAndClothesWornList(
+            outfitModel.toOutfitEntity(),
+            clothesWornList.map { it.toClothesWornEntity() }
+        )
     }
 
     override fun getOutfitById(id: Int): Flow<OutfitModel> {

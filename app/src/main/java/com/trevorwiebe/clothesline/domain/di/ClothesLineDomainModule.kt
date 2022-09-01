@@ -2,16 +2,10 @@ package com.trevorwiebe.clothesline.domain.di
 
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
 import com.trevorwiebe.clothesline.domain.use_cases.ParseCurrencyToLong
-import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.AddClothesWornListUC
-import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.AddClothesWornUC
-import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.ManageClothesWornUseCases
-import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.DeleteClothesWornUC
+import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.*
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecases.*
 import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.*
-import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.GetClothesWorn
-import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.GetOutfitByIdUC
-import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.GetOutfitsAndClothesWornByDateUC
-import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.OutfitUseCases
+import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -75,7 +69,8 @@ object ClothesLineDomainModule {
     ): OutfitUseCases {
         return OutfitUseCases(
             getOutfitByIdUC = GetOutfitByIdUC(repository),
-            getOutfitsAndClothesWornByDateUC = GetOutfitsAndClothesWornByDateUC(repository)
+            getOutfitsAndClothesWornByDateUC = GetOutfitsAndClothesWornByDateUC(repository),
+            insertOutfitAndClothesWornListUC = InsertOutfitAndClothesWornListUC(repository)
         )
     }
 
