@@ -14,6 +14,7 @@ import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
 import com.trevorwiebe.clothesline.presentation.ui.components.ActionButton
 import com.trevorwiebe.clothesline.presentation.ui.components.CustomOutlineTextField
 import com.trevorwiebe.clothesline.presentation.ui.screens.viewclothesworn.components.DaySelectorBar
+import com.trevorwiebe.clothesline.presentation.ui.screens.viewclothesworn.components.OutfitItem
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
 @Composable
@@ -32,8 +33,8 @@ fun ViewClothesWornScreen(
         DaySelectorBar(viewModel = viewModel)
         Spacer(modifier = Modifier.height(spacing.spaceLarge))
         LazyColumn{
-            item{
-                
+            items(state.outfitList){ outfit ->
+                OutfitItem(outfitModel = outfit)
             }
         }
     }

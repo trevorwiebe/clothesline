@@ -110,6 +110,12 @@ class ClothesLineRepositoryImpl(
         )
     }
 
+    override fun getOutfitByDate(date: LocalDate): Flow<List<OutfitModel>> {
+        return outfitDao.getOutfitsByDate(date.year, date.monthValue, date.dayOfMonth).map { outfitEntityList ->
+            outfitEntityList.map { it.toOutfitModel() }
+        }
+    }
+
     override fun getOutfitById(id: Int): Flow<OutfitModel> {
         return outfitDao.getOutfitById(id).map { it.toOutfitModel() }
     }

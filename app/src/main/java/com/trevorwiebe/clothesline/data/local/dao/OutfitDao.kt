@@ -22,6 +22,12 @@ interface OutfitDao {
     @Query("SELECT * FROM outfit WHERE outfitPrimaryKey = :outfitId")
     fun getOutfitById(outfitId: Int): Flow<OutfitEntity>
 
+    @Query("SELECT * FROM outfit " +
+            "WHERE outfitDateWornDay = :day " +
+            "AND outfitDateWornMonth = :month " +
+            "AND outfitDateWornYear = :year")
+    fun getOutfitsByDate(year: Int, month: Int, day: Int): Flow<List<OutfitEntity>>
+
     @Transaction
     @Query("SELECT * FROM outfit " +
             "WHERE outfitDateWornDay = :day " +

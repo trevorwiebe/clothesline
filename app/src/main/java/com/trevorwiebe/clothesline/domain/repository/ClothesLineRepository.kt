@@ -46,5 +46,7 @@ interface ClothesLineRepository {
 
     fun getOutfitById(id: Int): Flow<OutfitModel>
 
+    fun getOutfitByDate(date: LocalDate): Flow<List<OutfitModel>>
+
     fun getOutfitsAndClothesWornByDate(date: LocalDate): Flow<List<OutfitAndClothesWornModel>>
 }

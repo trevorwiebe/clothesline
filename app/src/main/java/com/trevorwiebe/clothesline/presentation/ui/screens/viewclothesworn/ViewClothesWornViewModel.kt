@@ -48,10 +48,11 @@ class ViewClothesWornViewModel @Inject constructor(
 
     private fun loadOutfitsByDate(date: LocalDate){
         loadOutfitsJob?.cancel()
-        loadOutfitsJob = outfitUseCases
-            .getOutfitsAndClothesWornByDateUC(date)
+        loadOutfitsJob = outfitUseCases.getOutfitsByDateUC(date)
             .map {
-
+                state = state.copy(
+                    outfitList = it
+                )
             }
             .launchIn(viewModelScope)
     }

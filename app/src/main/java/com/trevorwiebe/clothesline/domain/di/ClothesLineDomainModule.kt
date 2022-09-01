@@ -70,7 +70,8 @@ object ClothesLineDomainModule {
         return OutfitUseCases(
             getOutfitByIdUC = GetOutfitByIdUC(repository),
             getOutfitsAndClothesWornByDateUC = GetOutfitsAndClothesWornByDateUC(repository),
-            insertOutfitAndClothesWornListUC = InsertOutfitAndClothesWornListUC(repository)
+            insertOutfitAndClothesWornListUC = InsertOutfitAndClothesWornListUC(repository),
+            getOutfitsByDateUC = GetOutfitsByDateUC(repository)
         )
     }
 

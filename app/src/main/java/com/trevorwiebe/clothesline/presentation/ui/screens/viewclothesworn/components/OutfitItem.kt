@@ -12,13 +12,12 @@ import androidx.compose.ui.draw.clip
 import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
 import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
 import com.trevorwiebe.clothesline.domain.model.OutfitModel
+import com.trevorwiebe.clothesline.presentation.ui.components.parseDate
 import com.trevorwiebe.clothesline.presentation.ui.theme.LocalSpacing
 
 @Composable
 fun OutfitItem(
     outfitModel: OutfitModel,
-    clothesCategoryList: List<ClothesCategoryModel>,
-    clothesWornList: List<ClothesWornModel>
 ) {
 
     val spacing = LocalSpacing.current
@@ -28,6 +27,9 @@ fun OutfitItem(
             .clip(RoundedCornerShape(spacing.radius_two))
             .background(MaterialTheme.colors.surface)
     ) {
-        
+        Text(
+            text = parseDate(date = outfitModel.date),
+            modifier = Modifier.padding(spacing.spaceMedium)
+        )
     }
 }
