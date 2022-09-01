@@ -10,7 +10,7 @@ import com.trevorwiebe.clothesline.domain.use_cases.manageclothescategory_usecas
 import com.trevorwiebe.clothesline.domain.use_cases.manangeclothes_usecases.*
 import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.GetClothesWorn
 import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.GetOutfitByIdUC
-import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.GetOutfitsByDateUC
+import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.GetOutfitsAndClothesWornByDateUC
 import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.OutfitUseCases
 import dagger.Module
 import dagger.Provides
@@ -75,7 +75,7 @@ object ClothesLineDomainModule {
     ): OutfitUseCases {
         return OutfitUseCases(
             getOutfitByIdUC = GetOutfitByIdUC(repository),
-            getOutfitsByDateUC = GetOutfitsByDateUC(repository)
+            getOutfitsAndClothesWornByDateUC = GetOutfitsAndClothesWornByDateUC(repository)
         )
     }
 

@@ -1,10 +1,7 @@
 package com.trevorwiebe.clothesline.domain.repository
 
-import com.trevorwiebe.clothesline.data.local.entities.ClothesCategoryEntity
-import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
-import com.trevorwiebe.clothesline.domain.model.ClothesModel
-import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
-import com.trevorwiebe.clothesline.domain.model.OutfitModel
+import com.trevorwiebe.clothesline.data.local.entities.OutfitWithClothesWornEntity
+import com.trevorwiebe.clothesline.domain.model.*
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
 
@@ -43,10 +40,12 @@ interface ClothesLineRepository {
 
     fun getClothesCategoryAndClothes(): Flow<Map<ClothesCategoryModel, List<ClothesModel>>>
 
+
+
     // Outfit
     suspend fun insertOutfit(outfitModel: OutfitModel)
 
     fun getOutfitById(id: Int): Flow<OutfitModel>
 
-    fun getOutfitsByDate(date: LocalDate): Flow<List<OutfitModel>>
+    fun getOutfitsAndClothesWornByDate(date: LocalDate): Flow<List<OutfitAndClothesWornModel>>
 }

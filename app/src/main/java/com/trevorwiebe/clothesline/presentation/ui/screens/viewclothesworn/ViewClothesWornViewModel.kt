@@ -5,13 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.trevorwiebe.clothesline.domain.use_cases.manageclothesworn_usecases.ManageClothesWornUseCases
 import com.trevorwiebe.clothesline.domain.use_cases.outfit_usecases.OutfitUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onEach
 import java.time.LocalDate
 import javax.inject.Inject
 
@@ -51,11 +49,9 @@ class ViewClothesWornViewModel @Inject constructor(
     private fun loadOutfitsByDate(date: LocalDate){
         loadOutfitsJob?.cancel()
         loadOutfitsJob = outfitUseCases
-            .getOutfitsByDateUC(date)
+            .getOutfitsAndClothesWornByDateUC(date)
             .map {
-                state = state.copy(
-                    outfitList = it
-                )
+
             }
             .launchIn(viewModelScope)
     }

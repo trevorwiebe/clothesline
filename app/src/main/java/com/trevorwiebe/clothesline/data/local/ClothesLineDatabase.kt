@@ -6,10 +6,7 @@ import com.trevorwiebe.clothesline.data.local.dao.ClothesDao
 import com.trevorwiebe.clothesline.data.local.dao.ClothesCategoryDao
 import com.trevorwiebe.clothesline.data.local.dao.ClothesWornDao
 import com.trevorwiebe.clothesline.data.local.dao.OutfitDao
-import com.trevorwiebe.clothesline.data.local.entities.ClothesEntity
-import com.trevorwiebe.clothesline.data.local.entities.ClothesCategoryEntity
-import com.trevorwiebe.clothesline.data.local.entities.ClothesWornEntity
-import com.trevorwiebe.clothesline.data.local.entities.OutfitEntity
+import com.trevorwiebe.clothesline.data.local.entities.*
 
 @Database(
     entities = [

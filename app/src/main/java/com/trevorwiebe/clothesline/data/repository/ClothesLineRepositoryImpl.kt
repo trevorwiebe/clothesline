@@ -1,17 +1,14 @@
 package com.trevorwiebe.clothesline.data.repository
 
-import android.util.Log
 import com.trevorwiebe.clothesline.data.local.dao.ClothesCategoryDao
 import com.trevorwiebe.clothesline.data.local.dao.ClothesDao
 import com.trevorwiebe.clothesline.data.local.dao.ClothesWornDao
 import com.trevorwiebe.clothesline.data.local.dao.OutfitDao
 import com.trevorwiebe.clothesline.data.local.entities.ClothesCategoryEntity
 import com.trevorwiebe.clothesline.data.local.entities.ClothesEntity
+import com.trevorwiebe.clothesline.data.local.entities.OutfitWithClothesWornEntity
 import com.trevorwiebe.clothesline.data.mapper.*
-import com.trevorwiebe.clothesline.domain.model.ClothesCategoryModel
-import com.trevorwiebe.clothesline.domain.model.ClothesModel
-import com.trevorwiebe.clothesline.domain.model.ClothesWornModel
-import com.trevorwiebe.clothesline.domain.model.OutfitModel
+import com.trevorwiebe.clothesline.domain.model.*
 import com.trevorwiebe.clothesline.domain.repository.ClothesLineRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -112,10 +109,13 @@ class ClothesLineRepositoryImpl(
         return outfitDao.getOutfitById(id).map { it.toOutfitModel() }
     }
 
-    override fun getOutfitsByDate(date: LocalDate): Flow<List<OutfitModel>> {
-        return outfitDao.getOutfitsById(date.year, date.monthValue, date.dayOfMonth)
-            .map { entities ->
-            entities.map { it.toOutfitModel() }
-        }
+    override fun getOutfitsAndClothesWornByDate(date: LocalDate): Flow<List<OutfitAndClothesWornModel>> {
+        return outfitDao.getOutfitsAndClothesWornByDate(date.year, date.monthValue, date.dayOfMonth)
+            .map { outfitClothesWornList ->
+                outfitClothesWornList.map {
+                    it.toOutfitWithClothesWornModel()
+                }
+            }
     }
+
 }
